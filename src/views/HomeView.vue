@@ -26,7 +26,7 @@
 
       <section class="content">
         <img
-          src="C:\Users\chubb\Desktop\EDP\EDPWebsite\edp-website\src\components\icons\palestine.svg"
+          src="/src/components/icons/palestine.svg"
           alt="kids"
         />
         <!-- <h2>Our Mission</h2>
@@ -43,7 +43,7 @@
             We partner with the Aboitiz business units. Together with the Aboitiz Business Units, we develop and implement CSR projects that aim to co-create safe, empowered, and sustainable communities. Tagged as CSR 2.0, our projects deliver long-term benefits, are aligned with our core competencies, encourage team member engagement, and are scalable initiatives with positive sustainable impact of national scope.
           </p>
 
-          <img src="C:\Users\chubb\Desktop\EDP\EDPWebsite\edp-website\src\components\icons\image.svg" style="scale: 0.7;" alt="">
+          <img src="/src/components/icons/image.svg" style="scale: 0.7;" alt="">
         </div>
     </div>
   </div>
