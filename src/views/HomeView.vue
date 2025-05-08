@@ -21,7 +21,7 @@
         </div>
         </div>
 
-       
+
       </section>
 
       <section class="content">
@@ -53,14 +53,14 @@
 .sponsors-text-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  text-align: center; 
+  align-items: center;
+  text-align: center;
 }
 
 .intro-text-wrapper {
   display: flex;
   justify-content: center;
-  
+
   flex-direction: column;
   margin-top: 1rem;
   padding-left: 15rem;
@@ -98,7 +98,7 @@
 
   p {
     margin-bottom: 2rem;
-    width: 75%;    
+    width: 75%;
 
   }
 }
