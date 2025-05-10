@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <img
-          src="./icons/Frame.svg"
+          src="./icons/Logo.png"
           alt="Aboitiz Foundation"
           class="footer-logo"
         />
@@ -128,7 +128,7 @@ const currentYear = new Date().getFullYear()
 .partner-logos img {
   max-width: 100%;
   height: auto;
- 
+
 }
 
 .partner-logos img:hover {

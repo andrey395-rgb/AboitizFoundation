@@ -2,17 +2,14 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">
-        <img
-          src="./icons/Logo.png"
-          alt="Aboitiz Foundation"
-        />
+        <img src="./icons/Logo.png" alt="Aboitiz Foundation" />
       </div>
 
       <div class="nav-center">
         <router-link to="/">Home</router-link>
         <router-link to="/services">Services</router-link>
         <router-link to="/gallery">Gallery</router-link>
-        <router-link to="/scheduling">Scheduling</router-link>
+        <router-link to="/schedule">Scheduling</router-link>
         <router-link to="/contact">Contact Us</router-link>
       </div>
 
@@ -112,7 +109,6 @@
   border-radius: 4px;
   border: 2px solid #dc1b28;
   transition: all 0.3s ease;
-
 }
 
 .donate-btn:hover {
@@ -120,5 +116,4 @@
   color: #dc1b28 !important;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.178);
 }
-
 </style>
