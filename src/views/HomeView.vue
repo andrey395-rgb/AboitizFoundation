@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Add component logic here
 </script>
 
 <template>
@@ -17,34 +16,33 @@
             with the help of our partners.
           </p>
           <div class="donate-wrapper">
-          <a href="#" class="donate-btn">Donate</a>
+            <a href="#" class="donate-btn">Donate</a>
+          </div>
         </div>
-        </div>
-
-
       </section>
 
       <section class="content">
-        <img
-          src="/src/components/icons/palestine.svg"
-          alt="kids"
-        />
+        <img src="/src/components/icons/palestine.svg" alt="kids" />
         <!-- <h2>Our Mission</h2>
       <p>Add your mission statement here</p> -->
       </section>
     </div>
     <div class="second-home">
       <div class="sponsors-text-wrapper">
-          <div class="introTe">
-            <h1 style="color: black">Our <span style="color: #9f1a1c">Partners</span></h1>
-          </div>
-
-          <p>
-            We partner with the Aboitiz business units. Together with the Aboitiz Business Units, we develop and implement CSR projects that aim to co-create safe, empowered, and sustainable communities. Tagged as CSR 2.0, our projects deliver long-term benefits, are aligned with our core competencies, encourage team member engagement, and are scalable initiatives with positive sustainable impact of national scope.
-          </p>
-
-          <img src="/src/components/icons/image.svg" style="scale: 0.7;" alt="">
+        <div class="introTe">
+          <h1 style="color: black">Our <span style="color: #9f1a1c">Partners</span></h1>
         </div>
+
+        <p>
+          We partner with the Aboitiz business units. Together with the Aboitiz Business Units, we
+          develop and implement CSR projects that aim to co-create safe, empowered, and sustainable
+          communities. Tagged as CSR 2.0, our projects deliver long-term benefits, are aligned with
+          our core competencies, encourage team member engagement, and are scalable initiatives with
+          positive sustainable impact of national scope.
+        </p>
+
+        <img src="/src/components/icons/image.svg" style="scale: 0.7" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -69,6 +67,22 @@
   display: flex;
   justify-content: left;
   margin-top: 1rem;
+}
+
+.donate-btn {
+  background: #dc1b28;
+  color: white !important;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  border: 2px solid #dc1b28;
+  transition: all 0.3s ease;
+}
+
+.donate-btn:hover {
+  background: white;
+  color: #dc1b28 !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.178);
 }
 
 .first-home {
@@ -99,7 +113,6 @@
   p {
     margin-bottom: 2rem;
     width: 75%;
-
   }
 }
 .home {
@@ -154,7 +167,7 @@
   }
 }
 
-.donate-btn {
+/* .donate-btn {
   background: #dc1b28;
   color: white;
   padding: 0.5rem 1.5rem;
@@ -164,5 +177,5 @@
 
 .donate-btn:hover {
   background: #b01520;
-}
+} */
 </style>
