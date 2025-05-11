@@ -57,14 +57,20 @@
       <div class="value-cards-container">
         <div class="first-card-container">
           <div class="value-card">
-            <h2>INTEGRITY</h2>
+            <div class="first-part">
+              <img src="/src/components/icons/honest.png" alt="" />
+              <h2>INTEGRITY</h2>
+            </div>
             <p>
               We believe in integrity. We deliver on what we promise, practice fair processes, are
               accountable for our actions and their consequences.
             </p>
           </div>
           <div class="value-card">
-            <h2>TEAMWORK</h2>
+            <div class="first-part">
+              <img src="/src/components/icons/collaborate.png" alt="" />
+              <h2>TEAMWORK</h2>
+            </div>
             <p>
               We believe in teamwork. We apply a multi-disciplinary approach to achieve our business
               goals. We work independently while promoting cooperation and mutual respect.
@@ -73,14 +79,21 @@
         </div>
         <div class="second-card-container">
           <div class="value-card">
-            <h2>INNOVATION</h2>
+            <div class="first-part">
+              <img src="/src/components/icons/innovation.png" alt="" />
+              <h2>INNOVATION</h2>
+            </div>
+
             <p>
               We believe in innovation. We constantly look for better ways to provide efficient
               systems, quality service and products.
             </p>
           </div>
           <div class="value-card">
-            <h2>RESPONSIBILITY</h2>
+            <div class="first-part">
+              <img src="/src/components/icons/social-responsibility.png" alt="" />
+              <h2>RESPONSIBILITY</h2>
+            </div>
             <p>
               We believe in responsibility. We adhere to good corporate governance, advocate
               organizational and environmental sustainability, and care for all our stakeholders.
@@ -93,6 +106,13 @@
 </template>
 
 <style scoped>
+.first-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
 .core-values-section {
   width: 100%;
   padding: 0;
@@ -111,6 +131,7 @@
   margin: 2rem 0 2rem 0;
   h1 {
     margin-bottom: 1rem;
+    font-size: 62px;
   }
   p {
     max-width: 50%;
@@ -132,8 +153,8 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: left;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     /* justify-content: center; */
     padding: 4rem;
     color: white;
