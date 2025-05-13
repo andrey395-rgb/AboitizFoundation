@@ -143,26 +143,10 @@ onUnmounted(() => {
 
 <template>
   <div class="services">
-    <div class="first-section">
-      <section class="hero">
-        <div class="intro-text-wrapper">
-          <div class="introTe">
-            <h1 style="color: black">Our <span style="color: #9f1a1c">Reach</span></h1>
-          </div>
-          <p>
-            With 43 locations nationwide, the Aboitiz Foundation's reach spans across the
-            Philippines. These sites are a testament to our commitment to our Vision, Mission, and
-            Goals—helping us create sustainable impact and drive positive change in communities.
-          </p>
-          <div class="donate-wrapper">
-            <a href="#" class="donate-btn">Donate</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="content">
-        <img src="/src/components/icons/palestine.svg" alt="services illustration" />
-      </section>
+    <!-- Hero Banner - Doubled height -->
+    <div class="hero-banner">
+      <img src="/src/components/icons/palestine.svg" alt="Services banner" class="banner-image" />
+      <div class="banner-overlay"></div>
     </div>
 
     <!-- Content Box overlapping the banner - thinner height -->
@@ -202,7 +186,7 @@ onUnmounted(() => {
         </div>
 
         <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
-          <div class="carousel-inner" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+          <div class="carousel-inner" :style="{ transform: translateX(-${currentSlide * 100}%) }">
             <div class="carousel-item" v-for="(project, index) in projects" :key="index">
               <img :src="project.image" :alt="project.title" />
               <div class="carousel-caption hover-target">
