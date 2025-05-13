@@ -15,10 +15,17 @@
         </div>
       </div>
       <div class="footer-right">
-        <div class="partner-logos">
-          <div class="first-row">
-            <img src="./icons/image.svg" alt="Aboitiz Construction" />
-          </div>
+        <div class="partners-logo-grid">
+          <a
+            v-for="(partner, index) in partners"
+            :key="index"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="partner-logo-link"
+          >
+            <img :src="partner.logo" :alt="partner.name + ' logo'" class="partner-logo" />
+          </a>
         </div>
       </div>
     </div>
@@ -29,7 +36,21 @@
 </template>
 
 <script setup lang="ts">
-const currentYear = new Date().getFullYear()
+import { ref } from 'vue';
+
+const currentYear = new Date().getFullYear();
+
+// Partner logos data - matching the HomeView structure
+const partners = [
+  { name: "Aboitiz Power", logo: "/src/components/icons/partner1.png" },
+  { name: "Aboitiz Equity Ventures", logo: "/src/components/icons/partner2.png" },
+  { name: "Union Bank", logo: "/src/components/icons/partner3.png" },
+  { name: "Pilmico", logo: "/src/components/icons/partner4.png" },
+  { name: "Aboitiz InfraCapital", logo: "/src/components/icons/partner5.png" },
+  { name: "Aboitiz Land", logo: "/src/components/icons/partner6.png" },
+  { name: "Republic Cement", logo: "/src/components/icons/partner7.png" },
+  { name: "Aboitiz Foundation", logo: "/src/components/icons/partner8.png" }
+];
 </script>
 
 <style scoped>
@@ -38,7 +59,7 @@ const currentYear = new Date().getFullYear()
   min-width: 100%;
   background: #ffffff;
   padding: 3rem 0 0;
-  margin: 0 0 0 0;
+  margin: 0;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -52,14 +73,14 @@ const currentYear = new Date().getFullYear()
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
-  gap: 15rem;
+  gap: 4rem;
   box-sizing: border-box;
-  /* border-top: #666 solid 1px; */
 }
 
 .footer-left {
   flex: 1;
   border-right: #666 solid 1px;
+  padding-right: 2rem;
 }
 
 .footer-logo {
@@ -85,7 +106,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .social-links a:hover {
-  color: #dc1b28;
+  color: #9f1a1c;
 }
 
 .footer-right {
@@ -95,36 +116,32 @@ const currentYear = new Date().getFullYear()
   align-items: center;
 }
 
-.partner-logos {
-  display: flex;
-  justify-content: flex-end;
+/* Partners Logo Grid - 8 logos, matching HomeView */
+.partners-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   width: 100%;
-
-  .first-row {
-    display: flex;
-    gap: 2rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    width: 100%;
-  }
-  .second-row {
-    display: flex;
-    gap: 2rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    width: 100%;
-  }
 }
 
-.partner-logos img {
-  max-width: 100%;
+.partner-logo-link {
+  display: block;
+  transition: transform 0.3s ease;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.partner-logo-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.partner-logo {
+  width: 100%;
   height: auto;
-}
-
-.partner-logos img:hover {
-  filter: grayscale(0%);
+  display: block;
 }
 
 .footer-bottom {
@@ -133,25 +150,39 @@ const currentYear = new Date().getFullYear()
   padding: 1rem 0;
   text-align: center;
   border-top: 1px solid #ddd;
-  color: #666;
+  color: white;
   box-sizing: border-box;
   background: #9f1a1c;
-  color: white;
 }
 
-@media (max-width: 1024px) {
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .footer-container {
-    padding: 2rem;
+    padding: 0 2rem;
+    gap: 3rem;
   }
 
-  .partner-logos .first-row,
-  .partner-logos .second-row {
-    justify-content: center;
-    gap: 1.5rem;
+  .partners-logo-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
 
-  .partner-logos img {
-    max-width: 120px;
+  .partner-logo-link {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer-container {
+    gap: 2rem;
+  }
+
+  .partners-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-left {
+    padding-right: 1.5rem;
   }
 }
 
@@ -159,50 +190,67 @@ const currentYear = new Date().getFullYear()
   .footer-container {
     flex-direction: column;
     gap: 2rem;
-    padding: 1.5rem;
+    padding: 0 1.5rem;
   }
 
-  .footer-left,
+  .footer-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: #666 solid 1px;
+    padding-right: 0;
+    padding-bottom: 2rem;
+  }
+
   .footer-right {
     width: 100%;
+    justify-content: flex-start;
   }
 
-  .footer-right {
-    justify-content: center;
-  }
-
-  .partner-logos {
-    justify-content: center;
-  }
-
-  .partner-logos .first-row,
-  .partner-logos .second-row {
+  .partners-logo-grid {
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-  }
-
-  .partner-logos img {
-    max-width: 100px;
   }
 }
 
+@media (max-width: 576px) {
+  .partners-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Hide sponsors in mobile view as requested */
 @media (max-width: 480px) {
-  .footer-container {
-    padding: 1rem;
+  .footer-right {
+    display: none;
   }
 
-  .footer-left h2 {
-    font-size: 1.2rem;
+  .footer-container {
+    padding: 0 1rem;
+  }
+
+  .footer-left {
+    border-bottom: none;
+    padding-bottom: 1rem;
+  }
+
+  .footer-logo {
+    height: 40px;
   }
 
   .social-links {
     gap: 0.8rem;
   }
 
-  .partner-logos img {
-    max-width: 80px;
+  .social-links a {
+    font-size: 1.3rem;
+  }
+
+  .address {
+    font-size: 0.9rem;
   }
 
   .footer-bottom {
+    margin-top: 1.5rem;
     font-size: 0.9rem;
   }
 }
