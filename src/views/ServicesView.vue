@@ -29,6 +29,75 @@ const projects = [
   }
 ];
 
+// Parameters section data
+const parameters = [
+  {
+    number: "01",
+    title: "Addresses a community need",
+    points: [
+      "Has the capacity to increase income levels and generate employment",
+      "Uplift the living conditions of the beneficiaries."
+    ]
+  },
+  {
+    number: "02",
+    title: "Aligns with our core business",
+    points: [
+      "Relates to the core businesses of our strategic business units (SBUs) – power, banking and financial services, food, infrastructure, and land."
+    ]
+  },
+  {
+    number: "03",
+    title: "Helps our business or creates competitive advantage for the Business Units (BUs)",
+    points: [
+      "Helps increase revenues and lower costs",
+      "Enhances key stakeholder relationships with local government unit, host community, etc.",
+    ]
+  },
+  {
+    number: "04",
+    title: "Aligns with the Aboitiz Foundation's programs",
+    points: [
+      "Aligns with the foundation's program of education, enterprise development, environment, including disaster risk reduction and resilience"
+    ]
+  },
+  {
+    number: "05",
+    title: "Sustainable and scalable",
+    points: [
+      "Has potential for growth and expansion",
+      "Creates lasting impact beyond initial implementation"
+    ]
+  },
+  {
+    number: "06",
+    title: "Measurable impact",
+    points: [
+      "Has clear metrics for success",
+      "Allows for transparent reporting of outcomes"
+    ]
+  },
+  {
+    number: "07",
+    title: "Collaborative approach",
+    points: [
+      "Involves multiple stakeholders in planning and execution",
+      "Leverages partnerships for greater impact"
+    ]
+  }
+];
+
+// Active parameter for mobile view
+const activeParameter = ref(0);
+
+const nextParameter = () => {
+  activeParameter.value = (activeParameter.value + 1) % parameters.length;
+};
+
+const prevParameter = () => {
+  activeParameter.value = (activeParameter.value - 1 + parameters.length) % parameters.length;
+};
+
 const nextSlide = () => {
   if (isTransitioning.value) return;
   isTransitioning.value = true;
@@ -73,41 +142,51 @@ onUnmounted(() => {
 
 <template>
   <div class="services">
-    <div class="first-section">
-      <section class="hero">
-        <div class="intro-text-wrapper">
-          <div class="introTe">
-            <h1 style="color: black">Our <span style="color: #9f1a1c">Services</span></h1>
-          </div>
-
-          <p>
-            The Aboitiz Foundation delivers impactful programs and services across various sectors,
-            creating sustainable change in communities through our partnerships and initiatives.
-          </p>
-          <div class="donate-wrapper">
-            <a href="#" class="donate-btn">Donate</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="content">
-        <img
-          src="/src/components/icons/palestine.svg"
-          alt="services illustration"
-        />
-      </section>
+    <!-- Hero Banner - Doubled height -->
+    <div class="hero-banner">
+      <img
+        src="/src/components/icons/palestine.svg"
+        alt="Services banner"
+        class="banner-image"
+      />
+      <div class="banner-overlay"></div>
     </div>
 
+    <!-- Content Box overlapping the banner - thinner height -->
+    <div class="content-box">
+      <div class="decorative-line left"></div>
+      <div class="decorative-circle top-right"></div>
+      <div class="decorative-circle bottom-left"></div>
+      <div class="content-text">
+        <div class="introTe">
+          <h1>Our <span class="accent">Services</span></h1>
+        </div>
+        <p>
+          The Aboitiz Foundation delivers impactful programs and services across various sectors,
+          creating sustainable change in communities through our partnerships and initiatives.
+        </p>
+      </div>
+      <div class="decorative-line right"></div>
+    </div>
+
+    <!-- Featured Projects Section - Side by side layout -->
     <div class="second-section">
       <div class="projects-wrapper">
-        <div class="introTe">
-          <h1 style="color: black">Featured <span style="color: #9f1a1c">Projects</span></h1>
-        </div>
+        <div class="projects-content">
+          <div class="introTe">
+            <h1>Featured <span class="accent">Projects</span></h1>
+          </div>
 
-        <p>
-          Explore our ongoing and completed projects that make a difference in people's lives
-          and contribute to nation-building.
-        </p>
+          <p class="projects-description">
+            Explore our ongoing and completed projects that make a difference in people's lives
+            and contribute to nation-building.
+          </p>
+
+          <!-- Volunteer button moved here -->
+          <div class="button-wrapper">
+            <a href="/contact" class="volunteer-btn">Volunteer</a>
+          </div>
+        </div>
 
         <div class="carousel"
           @mouseenter="isHovered = true"
@@ -141,6 +220,71 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+
+    <!-- Seven Parameters Section with Creative Design -->
+    <div class="parameters-section">
+      <div class="parameters-header">
+        <h2>Seven Parameters</h2>
+        <p>
+          To ensure that our projects deliver the much needed results for our communities, we encourage development of carefully-designed interventions that are inclusive, collaborative, and scalable. From the traditional charitable projects or dole-outs, we have been transforming the way we do CSR and following the CSR 2.0 parameters towards inclusive impact.
+        </p>
+      </div>
+
+      <!-- Desktop view - Adjusted grid layout: 3 in first row, 4 in second row -->
+      <div class="parameters-grid desktop-only">
+        <!-- First row: parameters 1-3 -->
+        <div v-for="(param, index) in parameters.slice(0, 3)" :key="index" class="parameter-card">
+          <div class="parameter-number">{{ param.number }}</div>
+          <div class="parameter-content">
+            <h3>{{ param.title }}</h3>
+            <ul>
+              <li v-for="(point, pointIndex) in param.points" :key="pointIndex">
+                {{ point }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Second row: parameters 4-7 -->
+        <div v-for="(param, index) in parameters.slice(3)" :key="index + 3" class="parameter-card">
+          <div class="parameter-number">{{ param.number }}</div>
+          <div class="parameter-content">
+            <h3>{{ param.title }}</h3>
+            <ul>
+              <li v-for="(point, pointIndex) in param.points" :key="pointIndex">
+                {{ point }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile view - Carousel style -->
+      <div class="parameters-carousel mobile-only">
+        <button class="param-nav prev" @click="prevParameter">❮</button>
+        <div class="param-slide">
+          <div class="parameter-number">{{ parameters[activeParameter].number }}</div>
+          <div class="parameter-content">
+            <h3>{{ parameters[activeParameter].title }}</h3>
+            <ul>
+              <li v-for="(point, pointIndex) in parameters[activeParameter].points" :key="pointIndex">
+                {{ point }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="param-nav next" @click="nextParameter">❯</button>
+
+        <div class="param-indicators">
+          <span
+            v-for="(_, index) in parameters"
+            :key="index"
+            :class="{ active: activeParameter === index }"
+            @click="activeParameter = index"
+          ></span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -152,106 +296,203 @@ onUnmounted(() => {
   background: #ffffff;
   align-items: center;
   justify-content: center;
+  font-size: 18px; /* Increased base font size */
 }
 
-.first-section {
+/* Hero Banner Styles - Doubled height */
+.hero-banner {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  background: #ffffff;
-  align-items: center;
-  justify-content: center;
+  height: 400px; /* Doubled from 400px to 800px */
+  position: relative;
+  overflow: hidden;
 }
 
-.second-section {
+.banner-image {
   width: 100%;
-  padding: 4rem;
-  display: flex;
-  flex-direction: row;
-  background: #ffffff;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.projects-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.intro-text-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 1rem;
-  padding-left: 15rem;
+/* Content Box Styles - Thinner height */
+.content-box {
+  width: 100%;
+  background: #9f1a1c; /* Red background */
+  color: white; /* White text */
+  padding: 2rem 0; /* Reduced padding to make it thinner */
+  margin-top: -5rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  text-align: center; /* Center text */
 }
 
-.donate-wrapper {
-  display: flex;
-  justify-content: left;
-  margin-top: 1rem;
+/* Decorative elements */
+.decorative-line {
+  position: absolute;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 150px;
 }
 
-.hero {
-  padding: 4rem 2rem;
-  width: 50%;
-  background: #ffffff;
+.decorative-line.left {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
 }
 
-.content {
-  max-width: 1200px;
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.decorative-line.right {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
 }
 
-.content img {
-  width: 91.5%;
-  height: auto;
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.decorative-circle.top-right {
+  width: 200px;
+  height: 200px;
+  top: -100px;
+  right: 10%;
+}
+
+.decorative-circle.bottom-left {
+  width: 150px;
+  height: 150px;
+  bottom: -75px;
+  left: 15%;
+}
+
+.content-text {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .introTe {
   display: flex;
   flex-direction: row;
-  justify-content: left;
   align-items: center;
+  justify-content: center; /* Center title */
   gap: 0.5rem;
+  margin-bottom: 1rem; /* Reduced margin to make it more compact */
 }
 
 .introTe h1 {
-  font-size: 62px;
-}
-
-p {
-  margin-bottom: 2rem;
-  width: 75%;
-}
-
-.donate-btn {
-  background: #dc1b28;
+  font-size: 3.5rem; /* Increased font size */
+  font-weight: bold;
   color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  position: relative;
 }
 
-.donate-btn:hover {
-  background: #b01520;
+.accent {
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Added shadow effect */
+}
+
+.content-box p {
+  color: #ffffff;
+  line-height: 1.7;
+  margin-bottom: 0;
+  font-size: 1.2rem; /* Increased font size */
+}
+
+/* Featured Projects Section - Side by side layout */
+.second-section {
+  width: 100%;
+  padding: 5rem 1rem;
+  background: #ffffff;
+}
+
+.projects-wrapper {
+  display: flex;
+  flex-direction: row; /* Changed to row for side-by-side layout */
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3rem;
+}
+
+.projects-content {
+  flex: 1;
+  text-align: left;
+  padding-top: 2rem;
+}
+
+.projects-content .introTe {
+  justify-content: flex-start; /* Left align title */
+}
+
+.projects-content .introTe h1 {
+  color: black;
+  font-size: 3rem; /* Increased font size */
+  text-align: left;
+}
+
+.projects-content .accent {
+  color: #9f1a1c;
+  font-weight: bold;
+  text-shadow: none;
+}
+
+.projects-description {
+  margin: 1.5rem 0;
+  color: #000000; /* Changed to black for better readability */
+  font-size: 1.2rem; /* Increased font size */
+  line-height: 1.7;
+  max-width: 100%;
+
+}
+
+/* Volunteer button moved under Featured Projects */
+.button-wrapper {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.volunteer-btn {
+  background: #9f1a1c;
+  color: white;
+  padding: 0.75rem 2.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem; /* Increased font size */
+}
+
+.volunteer-btn:hover {
+  background: white;
+  color: #9f1a1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #9f1a1c;
 }
 
 /* Carousel Styles */
 .carousel {
+  flex: 1.5;
   position: relative;
-  width: 80%;
-  max-width: 900px;
-  margin: 2rem auto;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-inner {
@@ -283,7 +524,7 @@ p {
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  padding-bottom: 2rem;
+  padding-bottom: 2.4rem;
   pointer-events: none;
 }
 
@@ -298,15 +539,16 @@ p {
 
 .carousel-caption h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Increased font size */
   color: #fff;
 }
 
 .carousel-caption p {
   margin: 0 auto;
   width: 90%;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.1rem; /* Increased font size */
+  line-height: 1.5;
+  color: #ffffff;
 }
 
 .carousel-control {
@@ -322,52 +564,439 @@ p {
   z-index: 10;
   border-radius: 50%;
   width: 50px;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.3s ease;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .carousel-control.prev {
-left: 20px;
+  left: 20px;
 }
 
 .carousel-control.next {
-right: 20px;
+  right: 20px;
 }
 
 .carousel-control:hover {
-background: rgba(0, 0, 0, 0.8);
-transform: translateY(-50%) scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-indicators {
-display: flex;
-justify-content: center;
-margin-top: 1rem;
-position: absolute;
-bottom: 20px;
-left: 0;
-right: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
 }
 
 .carousel-indicators span {
-width: 12px;
-height: 12px;
-border-radius: 50%;
-background: rgba(255, 255, 255, 0.5);
-margin: 0 5px;
-cursor: pointer;
-transition: all 0.3s ease;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .carousel-indicators span.active {
-background: #9f1a1c;
-transform: scale(1.2);
+  background: #9f1a1c;
+  transform: scale(1.2);
 }
 
 .carousel-indicators span:hover {
-background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Seven Parameters Section - Creative Design */
+.parameters-section {
+  width: 100%;
+  padding: 5rem 1rem;
+  background: #e2e2e2;
+  position: relative;
+  overflow: hidden;
+}
+
+.parameters-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(159, 26, 28, 0.05);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+}
+
+.parameters-header {
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+}
+
+.parameters-header h2 {
+  font-size: 3rem; /* Increased font size */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.parameters-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #9f1a1c;
+  border-radius: 2px;
+}
+
+.parameters-header p {
+  color: #000000; /* Changed to black for better readability */
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem; /* Increased font size */
+}
+
+/* Desktop Grid Layout - 3 in first row, 4 in second row */
+.parameters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for first row */
+  grid-template-rows: auto auto; /* Two rows */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Make the second row have 4 cards */
+.parameters-grid .parameter-card:nth-child(n+4) {
+  grid-column: span 1;
+}
+
+/* Center the 7th parameter if needed */
+.parameters-grid .parameter-card:nth-child(7) {
+  grid-column: 2 / span 1; /* Center in second row if needed */
+}
+
+.parameter-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border-top: 4px solid #9f1a1c;
+}
+
+.parameter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.parameter-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #9f1a1c;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  line-height: 1;
+}
+
+.parameter-content {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.parameter-content h3 {
+  font-size: 1.4rem; /* Increased font size */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.parameter-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.parameter-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #000000; /* Changed to black for better readability */
+  line-height: 1.5;
+  text-align: left;
+  font-size: 1.1rem; /* Increased font size */
+}
+
+.parameter-content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background: #9f1a1c;
+  border-radius: 50%;
+}
+
+/* Mobile Carousel for Parameters */
+.parameters-carousel {
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.param-slide {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  border-top: 4px solid #9f1a1c;
+  min-height: 300px;
+}
+
+.param-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(159, 26, 28, 0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.param-nav.prev {
+  left: 0;
+}
+
+.param-nav.next {
+  right: 0;
+}
+
+.param-nav:hover {
+  background: #9f1a1c;
+}
+
+.param-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.param-indicators span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(159, 26, 28, 0.3);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.param-indicators span.active {
+  background: #9f1a1c;
+  transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+.desktop-only {
+  display: grid;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .projects-wrapper {
+    gap: 2rem;
+  }
+
+  .decorative-line.left {
+    left: 2%;
+  }
+
+  .decorative-line.right {
+    right: 2%;
+  }
+
+  .hero-banner {
+    height: 600px; /* Adjusted for medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .projects-wrapper {
+    flex-direction: column;
+  }
+
+  .projects-content {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .projects-content .introTe {
+    justify-content: center;
+  }
+
+  .projects-content .introTe h1 {
+    text-align: center;
+  }
+
+  .button-wrapper {
+    justify-content: center;
+  }
+
+  .carousel {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .parameters-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+  }
+
+  /* Adjust the 7th parameter for 2-column layout */
+  .parameters-grid .parameter-card:nth-child(7) {
+    grid-column: 1 / span 2; /* Span both columns */
+  }
+
+  .introTe h1 {
+    font-size: 3rem;
+  }
+
+  .parameters-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .decorative-line {
+    display: none;
+  }
+
+  .hero-banner {
+    height: 500px; /* Adjusted for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 400px; /* Adjusted for mobile */
+  }
+
+  .content-box {
+    margin-top: -3rem;
+    padding: 1.5rem 0; /* Even thinner on mobile */
+  }
+
+  .introTe h1 {
+    font-size: 2.5rem;
+  }
+
+  .content-box p {
+    font-size: 1.1rem;
+  }
+
+  .carousel-item img {
+    height: 300px;
+  }
+
+  .parameters-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .parameters-header p {
+    font-size: 1.1rem;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .projects-content .introTe h1 {
+    font-size: 2.5rem;
+  }
+
+  .projects-description {
+    font-size: 1.1rem;
+  }
+
+  .decorative-circle {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    height: 300px; /* Adjusted for very small screens */
+  }
+
+  .introTe h1 {
+    font-size: 2rem;
+  }
+
+  .content-box p {
+    font-size: 1rem;
+  }
+
+  .volunteer-btn {
+    padding: 0.6rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .parameters-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .parameters-header p {
+    font-size: 1rem;
+  }
+
+  .projects-content .introTe h1 {
+    font-size: 2rem;
+  }
+
+  .projects-description {
+    font-size: 1rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
 }
 </style>
