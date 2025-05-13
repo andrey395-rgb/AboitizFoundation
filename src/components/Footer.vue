@@ -40,7 +40,7 @@ import { ref } from 'vue';
 
 const currentYear = new Date().getFullYear();
 
-// Partner logos data - matching the HomeView structure
+
 const partners = [
   { name: "Aboitiz Power", logo: "/src/components/icons/partner1.png" },
   { name: "Aboitiz Equity Ventures", logo: "/src/components/icons/partner2.png" },
