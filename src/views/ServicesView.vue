@@ -1,74 +1,78 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const currentSlide = ref(0);
-const isTransitioning = ref(false);
-let intervalId: number | undefined;
-const isHovered = ref(false);
+const currentSlide = ref(0)
+const isTransitioning = ref(false)
+let intervalId: number | undefined
+const isHovered = ref(false)
 
 const projects = [
   {
-    title: "Education Initiatives",
-    description: "Providing access to quality education through school building projects, scholarship programs, and teacher training.",
-    image: "/src/components/icons/palestine.svg"
+    title: 'Education Initiatives',
+    description:
+      'Providing access to quality education through school building projects, scholarship programs, and teacher training.',
+    image: '/src/components/icons/palestine.svg',
   },
   {
-    title: "Community Development",
-    description: "Empowering communities through livelihood programs, infrastructure development, and capacity building.",
-    image: "/src/components/icons/palestine.svg"
+    title: 'Community Development',
+    description:
+      'Empowering communities through livelihood programs, infrastructure development, and capacity building.',
+    image: '/src/components/icons/palestine.svg',
   },
   {
-    title: "Environmental Sustainability",
-    description: "Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.",
-    image: "/src/components/icons/palestine.svg"
+    title: 'Environmental Sustainability',
+    description:
+      'Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.',
+    image: '/src/components/icons/palestine.svg',
   },
   {
-    title: "Disaster Response",
-    description: "Providing immediate relief and long-term rehabilitation for communities affected by natural disasters.",
-    image: "/src/components/icons/palestine.svg"
-  }
-];
+    title: 'Disaster Response',
+    description:
+      'Providing immediate relief and long-term rehabilitation for communities affected by natural disasters.',
+    image: '/src/components/icons/palestine.svg',
+  },
+]
 
 const nextSlide = () => {
-  if (isTransitioning.value) return;
-  isTransitioning.value = true;
-  currentSlide.value = (currentSlide.value + 1) % projects.length;
-  setTimeout(() => isTransitioning.value = false, 500);
-};
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  currentSlide.value = (currentSlide.value + 1) % projects.length
+  setTimeout(() => (isTransitioning.value = false), 500)
+}
 
 const prevSlide = () => {
-  if (isTransitioning.value) return;
-  isTransitioning.value = true;
-  currentSlide.value = (currentSlide.value - 1 + projects.length) % projects.length;
-  setTimeout(() => isTransitioning.value = false, 500);
-};
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  currentSlide.value = (currentSlide.value - 1 + projects.length) % projects.length
+  setTimeout(() => (isTransitioning.value = false), 500)
+}
 
 const goToSlide = (index: number) => {
-  if (isTransitioning.value || currentSlide.value === index) return;
-  isTransitioning.value = true;
-  currentSlide.value = index;
-  setTimeout(() => isTransitioning.value = false, 500);
-};
+  if (isTransitioning.value || currentSlide.value === index) return
+  isTransitioning.value = true
+  currentSlide.value = index
+  setTimeout(() => (isTransitioning.value = false), 500)
+}
 
 const startAutoScroll = () => {
   intervalId = window.setInterval(() => {
-    if (!isHovered.value) nextSlide();
-  }, 3000);
-};
+    if (!isHovered.value) nextSlide()
+  }, 3000)
+}
 
 const stopAutoScroll = () => {
   if (intervalId) {
-    clearInterval(intervalId);
+    clearInterval(intervalId)
   }
-};
+}
 
 onMounted(() => {
-  startAutoScroll();
-});
+  startAutoScroll()
+})
 
 onUnmounted(() => {
-  stopAutoScroll();
-});
+  stopAutoScroll()
+})
 </script>
 
 <template>
@@ -91,10 +95,7 @@ onUnmounted(() => {
       </section>
 
       <section class="content">
-        <img
-          src="/src/components/icons/palestine.svg"
-          alt="services illustration"
-        />
+        <img src="/src/components/icons/palestine.svg" alt="services illustration" />
       </section>
     </div>
 
@@ -105,21 +106,14 @@ onUnmounted(() => {
         </div>
 
         <p>
-          Explore our ongoing and completed projects that make a difference in people's lives
-          and contribute to nation-building.
+          Explore our ongoing and completed projects that make a difference in people's lives and
+          contribute to nation-building.
         </p>
 
-        <div class="carousel"
-          @mouseenter="isHovered = true"
-          @mouseleave="isHovered = false"
-        >
+        <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
           <div class="carousel-inner" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-            <div
-              class="carousel-item"
-              v-for="(project, index) in projects"
-              :key="index"
-            >
-              <img :src="project.image" :alt="project.title">
+            <div class="carousel-item" v-for="(project, index) in projects" :key="index">
+              <img :src="project.image" :alt="project.title" />
               <div class="carousel-caption hover-target">
                 <h3>{{ project.title }}</h3>
                 <p>{{ project.description }}</p>
@@ -322,52 +316,151 @@ p {
   z-index: 10;
   border-radius: 50%;
   width: 50px;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.3s ease;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .carousel-control.prev {
-left: 20px;
+  left: 20px;
 }
 
 .carousel-control.next {
-right: 20px;
+  right: 20px;
 }
 
 .carousel-control:hover {
-background: rgba(0, 0, 0, 0.8);
-transform: translateY(-50%) scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-indicators {
-display: flex;
-justify-content: center;
-margin-top: 1rem;
-position: absolute;
-bottom: 20px;
-left: 0;
-right: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
 }
 
 .carousel-indicators span {
-width: 12px;
-height: 12px;
-border-radius: 50%;
-background: rgba(255, 255, 255, 0.5);
-margin: 0 5px;
-cursor: pointer;
-transition: all 0.3s ease;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .carousel-indicators span.active {
-background: #9f1a1c;
-transform: scale(1.2);
+  background: #9f1a1c;
+  transform: scale(1.2);
 }
 
 .carousel-indicators span:hover {
-background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 1024px) {
+  .first-section {
+    flex-direction: column;
+  }
+
+  .hero {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .content {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .intro-text-wrapper {
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .introTe {
+    justify-content: center;
+  }
+
+  .introTe h1 {
+    font-size: 48px;
+  }
+
+  .donate-wrapper {
+    justify-content: center;
+  }
+
+  .carousel {
+    width: 90%;
+  }
+
+  .carousel-item img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .introTe h1 {
+    font-size: 36px;
+  }
+
+  .carousel-item img {
+    height: 250px;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.2rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .introTe h1 {
+    font-size: 28px;
+  }
+
+  .carousel-item img {
+    height: 200px;
+  }
+
+  .carousel-caption {
+    padding: 1rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.8rem;
+  }
+
+  .carousel-control {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .carousel-indicators span {
+    width: 8px;
+    height: 8px;
+  }
 }
 </style>

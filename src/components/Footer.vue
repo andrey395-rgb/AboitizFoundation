@@ -2,11 +2,7 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-left">
-        <img
-          src="./icons/Logo.png"
-          alt="Aboitiz Foundation"
-          class="footer-logo"
-        />
+        <img src="./icons/Logo.png" alt="Aboitiz Foundation" class="footer-logo" />
         <div class="address">
           NAC Tower, 32nd Street Bonifacio Global City,<br />
           Taguig City, Philippines
@@ -21,10 +17,7 @@
       <div class="footer-right">
         <div class="partner-logos">
           <div class="first-row">
-            <img
-              src="./icons/image.svg"
-              alt="Aboitiz Construction"
-            />
+            <img src="./icons/image.svg" alt="Aboitiz Construction" />
           </div>
         </div>
       </div>
@@ -43,7 +36,7 @@ const currentYear = new Date().getFullYear()
 .footer {
   width: 100%;
   min-width: 100%;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 3rem 0 0;
   margin: 0 0 0 0;
   box-sizing: border-box;
@@ -128,7 +121,6 @@ const currentYear = new Date().getFullYear()
 .partner-logos img {
   max-width: 100%;
   height: auto;
-
 }
 
 .partner-logos img:hover {
@@ -147,13 +139,71 @@ const currentYear = new Date().getFullYear()
   color: white;
 }
 
+@media (max-width: 1024px) {
+  .footer-container {
+    padding: 2rem;
+  }
+
+  .partner-logos .first-row,
+  .partner-logos .second-row {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .partner-logos img {
+    max-width: 120px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-right {
+    justify-content: center;
   }
 
   .partner-logos {
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .partner-logos .first-row,
+  .partner-logos .second-row {
+    gap: 1rem;
+  }
+
+  .partner-logos img {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 1rem;
+  }
+
+  .footer-left h2 {
+    font-size: 1.2rem;
+  }
+
+  .social-links {
+    gap: 0.8rem;
+  }
+
+  .partner-logos img {
+    max-width: 80px;
+  }
+
+  .footer-bottom {
+    font-size: 0.9rem;
   }
 }
 </style>

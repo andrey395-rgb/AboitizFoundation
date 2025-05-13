@@ -5,15 +5,21 @@
         <img src="./icons/Logo.png" alt="Aboitiz Foundation" />
       </div>
 
-      <div class="nav-center">
-        <router-link to="/">Home</router-link>
-        <router-link to="/services">Services</router-link>
-        <router-link to="/gallery">Gallery</router-link>
-        <router-link to="/schedule">Scheduling</router-link>
-        <router-link to="/contact">Contact Us</router-link>
+      <div class="burger-menu" @click="toggleMenu">
+        <div class="bar" :class="{ active: isMenuOpen }"></div>
+        <div class="bar" :class="{ active: isMenuOpen }"></div>
+        <div class="bar" :class="{ active: isMenuOpen }"></div>
       </div>
 
-      <div class="nav-right">
+      <div class="nav-center" :class="{ active: isMenuOpen }">
+        <router-link to="/" @click="closeMenu">Home</router-link>
+        <router-link to="/services" @click="closeMenu">Services</router-link>
+        <router-link to="/gallery" @click="closeMenu">Gallery</router-link>
+        <router-link to="/schedule" @click="closeMenu">Scheduling</router-link>
+        <router-link to="/contact" @click="closeMenu">Contact Us</router-link>
+      </div>
+
+      <div class="nav-right" :class="{ active: isMenuOpen }">
         <a href="#" class="donate-btn">Donate</a>
       </div>
     </div>
@@ -21,7 +27,17 @@
 </template>
 
 <script setup lang="ts">
-// Component logic here if needed
+import { ref } from 'vue'
+
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
 </script>
 
 <style scoped>
@@ -53,6 +69,35 @@
 
 .logo img {
   height: 7vh;
+}
+
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.bar.active:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.bar.active:nth-child(2) {
+  opacity: 0;
+}
+
+.bar.active:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 .nav-center {
@@ -115,5 +160,60 @@
   background: white;
   color: #dc1b28 !important;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.178);
+}
+
+@media (max-width: 829px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav-center {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 80px 20px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-center.active {
+    right: 0;
+  }
+
+  .nav-right {
+    position: fixed;
+    top: 70%;
+    right: -100%;
+    width: 70%;
+    padding: 20px;
+    transition: right 0.3s ease;
+  }
+
+  .nav-right.active {
+    right: 0;
+  }
+
+  .nav-center a {
+    margin: 15px 0;
+    font-size: 1.2rem;
+  }
+
+  .logo img {
+    height: 5vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-center {
+    width: 100%;
+  }
+
+  .nav-right {
+    width: 100%;
+  }
 }
 </style>

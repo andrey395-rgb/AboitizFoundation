@@ -42,8 +42,20 @@
         <img src="/src/components/icons/image.svg" style="scale: 0.7" alt="" />
       </div>
     </div>
+    <div class="map-container">
+      <h1>Our <span style="color: #9f1a1c">Reach</span></h1>
+      <p class="map-description">
+        Discover the locations where Aboitiz Foundation is making a positive impact across the
+        Philippines.
+      </p>
+      <div class="map-section">
+        <iframe
+          class="map-embed"
+          src="https://www.google.com/maps/d/u/0/embed?mid=1NBYf_O7PJTmSs1sjaknUWhbYFhgZC0w&ehbc=2E312F"
+        ></iframe>
+      </div>
+    </div>
     <div class="core-values-section">
-      <img src="/src/components/icons/groupaboitiz.png" alt="" />
       <div class="core-values-header">
         <h1 style="color: #000000">
           The Aboitiz Way: <span style="color: #9f1a1c">Our Core Values</span>
@@ -76,8 +88,6 @@
               goals. We work independently while promoting cooperation and mutual respect.
             </p>
           </div>
-        </div>
-        <div class="second-card-container">
           <div class="value-card">
             <div class="first-part">
               <img src="/src/components/icons/innovation.png" alt="" />
@@ -100,12 +110,50 @@
             </p>
           </div>
         </div>
+        <div class="second-card-container"></div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.map-container {
+  width: 100%;
+  margin: 0rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-container h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.map-section {
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+  height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.map-embed {
+  width: 100%;
+  height: 700px;
+  margin-top: -70px; /* crops the black bar */
+  border: none;
+  display: block;
+}
+.first-card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
 .first-part {
   display: flex;
   flex-direction: column;
@@ -148,7 +196,7 @@
   text-align: center;
   .value-card {
     width: 400px;
-    /* height: 200px; */
+    height: 410px;
     background: #9f1a1c;
     border-radius: 10px;
     display: flex;
@@ -354,5 +402,13 @@
   line-height: 1.6;
   margin: 0;
   width: 100%;
+}
+
+.map-description {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  color: #333;
+  text-align: center;
+  max-width: 700px;
 }
 </style>

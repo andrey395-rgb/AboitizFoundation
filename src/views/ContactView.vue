@@ -5,13 +5,6 @@
         <h1 id="contactus-label" style="font-weight: bold">Contact Us</h1>
         <h2 style="color: #dc1b28">Reach and Contact us for a future that's brighter than ever</h2>
 
-        <!-- <iframe
-          src="https://www.google.com/maps/d/u/0/embed?mid=1NBYf_O7PJTmSs1sjaknUWhbYFhgZC0w&ehbc=2E312F"
-          width="600"
-          height="400"
-          style="top: -50px; border: 0"
-          loading="lazy"
-        ></iframe> -->
         <h2 class="map-label" style="font-weight: bold">Main Office</h2>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6494.815107797587!2d121.04721946907354!3d14.55113101150897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c8f3ef7d91c1%3A0x4f126248847ee7c!2sNAC%20Tower%2C%2032nd%20St%2C%20Taguig%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1746863152090!5m2!1sen!2sph"
@@ -170,5 +163,65 @@ export default {
   background: #ffffff;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .first-home {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .left-container,
+  .right-container {
+    width: 100%;
+  }
+
+  .right-container {
+    margin-top: 2rem;
+  }
+
+  input[type='text'],
+  textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .first-home {
+    padding: 1rem;
+  }
+
+  .inner-icons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .inner-icons img {
+    width: 3vh;
+  }
+
+  #contactus-label {
+    font-size: 3.5vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .first-home {
+    padding: 0.5rem;
+  }
+
+  .inner-icons img {
+    width: 2.5vh;
+  }
+
+  #contactus-label {
+    font-size: 2.5vh;
+  }
+
+  .hover-btn {
+    width: 100%;
+  }
 }
 </style>
