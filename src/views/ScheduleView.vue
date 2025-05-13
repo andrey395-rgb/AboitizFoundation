@@ -53,4 +53,33 @@ onMounted(() => {
   height: 700px;
   min-width: 800px;
 }
+
+@media (max-width: 1024px) {
+  .schedule-container {
+    padding: 1rem;
+  }
+
+  .calendly-inline-widget {
+    min-width: 600px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendly-inline-widget {
+    min-width: 400px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-container {
+    padding: 0.5rem;
+  }
+
+  .calendly-inline-widget {
+    min-width: 300px;
+    height: 400px;
+  }
+}
 </style>
