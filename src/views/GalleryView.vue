@@ -492,7 +492,7 @@ p {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1200px) {
   .header-section {
     margin-top: 100px;

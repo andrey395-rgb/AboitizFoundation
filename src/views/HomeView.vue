@@ -164,7 +164,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Map Section with Enhanced Styling -->
+
     <div class="map-container fade-in">
       <div class="map-header">
         <h1>Our <span class="accent">Reach</span></h1>
@@ -209,7 +209,6 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- Mobile View for Core Values - Swipeable without arrows -->
       <div
         class="values-carousel mobile-only"
         @touchstart="handleTouchStart"
@@ -238,16 +237,16 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Base Styles */
+
 .home {
   width: 100%;
   display: flex;
   flex-direction: column;
   background: #ffffff;
-  font-size: 18px; /* Increased base font size to match ServicesView */
+  font-size: 18px;
 }
 
-/* Typography */
+
 h1 {
   font-size: 3.5rem;
   font-weight: bold;
@@ -265,7 +264,7 @@ p {
   font-weight: bold;
 }
 
-/* Animation Classes */
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -277,7 +276,7 @@ p {
   transform: translateY(0);
 }
 
-/* Hero Section Styles */
+
 .first-home {
   width: 100%;
   display: flex;
@@ -354,7 +353,6 @@ p {
   transform: scale(1.03);
 }
 
-/* Decorative Elements */
 .decorative-circle {
   position: absolute;
   border-radius: 50%;
@@ -390,7 +388,6 @@ p {
   transform: translateY(-50%);
 }
 
-/* Full-width Banner */
 .banner-section {
   width: 100%;
   margin: 3rem 0;
@@ -420,7 +417,6 @@ p {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/* Partners Section */
 .second-home {
   width: 100%;
   padding: 5rem 2rem;
@@ -451,7 +447,7 @@ p {
   margin: 0 auto 2rem;
 }
 
-/* Partners Logo Grid - 8 logos */
+
 .partners-logo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -480,7 +476,7 @@ p {
   display: block;
 }
 
-/* Map Section */
+
 .map-container {
   width: 100%;
   padding: 5rem 2rem;
@@ -514,11 +510,11 @@ p {
 .map-embed {
   width: 100%;
   height: 700px;
-  margin-top: -70px; /* crops the black bar */
+  margin-top: -70px;
   border: none;
 }
 
-/* Core Values Section */
+
 .core-values-section {
   width: 100%;
   padding: 5rem 2rem;
@@ -616,7 +612,7 @@ p {
   margin: 0;
 }
 
-/* Mobile Carousel for Core Values - Swipeable without arrows */
+
 .values-carousel {
   max-width: 500px;
   margin: 0 auto;
@@ -660,7 +656,7 @@ p {
   transform: scale(1.2);
 }
 
-/* Responsive Styles */
+
 .desktop-only {
   display: grid;
 }
