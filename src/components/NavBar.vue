@@ -170,14 +170,14 @@ onUnmounted(() => {
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background-color: #dc1b28;
+  background-color: #9f1a1c;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
 }
 
 .nav-center a:hover {
-  color: #dc1b28;
+  color: #9f1a1c;
   background-color: transparent;
 }
 
@@ -194,19 +194,19 @@ onUnmounted(() => {
 }
 
 .donate-btn {
-  background: #dc1b28;
+  background: #9f1a1c;
   color: white !important;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
-  border: 2px solid #dc1b28;
+  border: 2px solid #9f1a1c;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .donate-btn:hover {
   background: white;
-  color: #dc1b28 !important;
+  color: #9f1a1c !important;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.178);
 }
 
@@ -293,7 +293,7 @@ onUnmounted(() => {
 
 .mobile-donate-btn {
 
-  background: #dc1b28;
+  background: #9f1a1c;
   color: white !important;
   font-weight: bold;
   padding: 0.75rem;
@@ -305,7 +305,7 @@ onUnmounted(() => {
 
 .mobile-donate-btn:hover {
   background: white;
-  color: #dc1b28 !important;
+  color: #9f1a1c !important;
 }
 
 /* Media Queries */
