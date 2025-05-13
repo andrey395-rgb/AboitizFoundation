@@ -11,25 +11,25 @@ const projects = [
     title: 'Education Initiatives',
     description:
       'Providing access to quality education through school building projects, scholarship programs, and teacher training.',
-    image: '/src/components/icons/palestine.svg',
+    image: '/src/components/icons/s1.png',
   },
   {
     title: 'Community Development',
     description:
       'Empowering communities through livelihood programs, infrastructure development, and capacity building.',
-    image: '/src/components/icons/palestine.svg',
+    image: '/src/components/icons/s2.png',
   },
   {
     title: 'Environmental Sustainability',
     description:
       'Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.',
-    image: '/src/components/icons/palestine.svg',
+    image: '/src/components/icons/s3.png',
   },
   {
     title: 'Disaster Response',
     description:
       'Providing immediate relief and long-term rehabilitation for communities affected by natural disasters.',
-    image: '/src/components/icons/palestine.svg',
+    image: '/src/components/icons/s4.png',
   },
 ]
 
@@ -145,7 +145,7 @@ onUnmounted(() => {
   <div class="services">
     <!-- Hero Banner - Doubled height -->
     <div class="hero-banner">
-      <img src="/src/components/icons/palestine.svg" alt="Services banner" class="banner-image" />
+      <img src="/src/components/icons/IP2.jpg" alt="Services banner" class="banner-image" />
       <div class="banner-overlay"></div>
     </div>
 

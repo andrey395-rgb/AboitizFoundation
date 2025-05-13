@@ -113,7 +113,7 @@ onMounted(() => {
 
       <section class="content fade-in">
         <div class="image-container">
-          <img src="/src/components/icons/palestine.svg" alt="Children benefiting from Aboitiz Foundation programs" />
+          <img src="/src/components/icons/IP1.jpg" alt="Children benefiting from Aboitiz Foundation programs" />
           <div class="decorative-circle top-right"></div>
           <div class="decorative-circle bottom-left"></div>
         </div>
@@ -123,7 +123,7 @@ onMounted(() => {
     <!-- Full-width Banner Above Partners Section -->
     <div class="banner-section">
       <div class="banner-image">
-        <img src="/src/components/icons/palestine.svg" alt="Aboitiz Foundation Impact" />
+        <img src="/src/components/icons/groupaboitiz.png" alt="Aboitiz Foundation Impact" />
         <div class="banner-overlay"></div>
       </div>
     </div>
