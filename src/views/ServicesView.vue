@@ -186,7 +186,7 @@ onUnmounted(() => {
         </div>
 
         <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
-          <div class="carousel-inner" :style="{ transform: translateX(-${currentSlide * 100}%) }">
+          <div class="carousel-inner" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
             <div class="carousel-item" v-for="(project, index) in projects" :key="index">
               <img :src="project.image" :alt="project.title" />
               <div class="carousel-caption hover-target">
