@@ -1,29 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue';
 
-const currentSlide = ref(0)
-const isTransitioning = ref(false)
-let intervalId: number | undefined
-const isHovered = ref(false)
+const currentSlide = ref(0);
+const isTransitioning = ref(false);
+let intervalId: number | undefined;
+const isHovered = ref(false);
 
 const projects = [
   {
-    title: 'Education Initiatives',
-    description:
-      'Providing access to quality education through school building projects, scholarship programs, and teacher training.',
-    image: '/src/components/icons/palestine.svg',
+    title: "Education Initiatives",
+    description: "Providing access to quality education through school building projects, scholarship programs, and teacher training.",
+    image: "/src/components/icons/palestine.svg"
   },
   {
-    title: 'Community Development',
-    description:
-      'Empowering communities through livelihood programs, infrastructure development, and capacity building.',
-    image: '/src/components/icons/palestine.svg',
+    title: "Community Development",
+    description: "Empowering communities through livelihood programs, infrastructure development, and capacity building.",
+    image: "/src/components/icons/palestine.svg"
   },
   {
-    title: 'Environmental Sustainability',
-    description:
-      'Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.',
-    image: '/src/components/icons/palestine.svg',
+    title: "Environmental Sustainability",
+    description: "Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.",
+    image: "/src/components/icons/palestine.svg"
   },
   {
     title: "Disaster Response",
@@ -32,46 +29,115 @@ const projects = [
   }
 ];
 
+// Parameters section data
+const parameters = [
+  {
+    number: "01",
+    title: "Addresses a community need",
+    points: [
+      "Has the capacity to increase income levels and generate employment",
+      "Uplift the living conditions of the beneficiaries."
+    ]
+  },
+  {
+    number: "02",
+    title: "Aligns with our core business",
+    points: [
+      "Relates to the core businesses of our strategic business units (SBUs) – power, banking and financial services, food, infrastructure, and land."
+    ]
+  },
+  {
+    number: "03",
+    title: "Helps our business or creates competitive advantage for the Business Units (BUs)",
+    points: [
+      "Helps increase revenues and lower costs",
+      "Enhances key stakeholder relationships with local government unit, host community, etc.",
+    ]
+  },
+  {
+    number: "04",
+    title: "Aligns with the Aboitiz Foundation's programs",
+    points: [
+      "Aligns with the foundation's program of education, enterprise development, environment, including disaster risk reduction and resilience"
+    ]
+  },
+  {
+    number: "05",
+    title: "Sustainable and scalable",
+    points: [
+      "Has potential for growth and expansion",
+      "Creates lasting impact beyond initial implementation"
+    ]
+  },
+  {
+    number: "06",
+    title: "Measurable impact",
+    points: [
+      "Has clear metrics for success",
+      "Allows for transparent reporting of outcomes"
+    ]
+  },
+  {
+    number: "07",
+    title: "Collaborative approach",
+    points: [
+      "Involves multiple stakeholders in planning and execution",
+      "Leverages partnerships for greater impact"
+    ]
+  }
+];
+
+// Active parameter for mobile view
+const activeParameter = ref(0);
+
+const nextParameter = () => {
+  activeParameter.value = (activeParameter.value + 1) % parameters.length;
+};
+
+const prevParameter = () => {
+  activeParameter.value = (activeParameter.value - 1 + parameters.length) % parameters.length;
+};
+
 const nextSlide = () => {
-  if (isTransitioning.value) return
-  isTransitioning.value = true
-  currentSlide.value = (currentSlide.value + 1) % projects.length
-  setTimeout(() => (isTransitioning.value = false), 500)
-}
+  if (isTransitioning.value) return;
+  isTransitioning.value = true;
+  currentSlide.value = (currentSlide.value + 1) % projects.length;
+  setTimeout(() => isTransitioning.value = false, 500);
+};
 
 const prevSlide = () => {
-  if (isTransitioning.value) return
-  isTransitioning.value = true
-  currentSlide.value = (currentSlide.value - 1 + projects.length) % projects.length
-  setTimeout(() => (isTransitioning.value = false), 500)
-}
+  if (isTransitioning.value) return;
+  isTransitioning.value = true;
+  currentSlide.value = (currentSlide.value - 1 + projects.length) % projects.length;
+  setTimeout(() => isTransitioning.value = false, 500);
+};
 
 const goToSlide = (index: number) => {
-  if (isTransitioning.value || currentSlide.value === index) return
-  isTransitioning.value = true
-  currentSlide.value = index
-  setTimeout(() => (isTransitioning.value = false), 500)
-}
+  if (isTransitioning.value || currentSlide.value === index) return;
+  isTransitioning.value = true;
+  currentSlide.value = index;
+  setTimeout(() => isTransitioning.value = false, 500);
+};
 
 const startAutoScroll = () => {
   intervalId = window.setInterval(() => {
-    if (!isHovered.value) nextSlide()
-  }, 3000)
-}
+    if (!isHovered.value) nextSlide();
+  }, 3000);
+};
 
 const stopAutoScroll = () => {
   if (intervalId) {
-    clearInterval(intervalId)
+    clearInterval(intervalId);
   }
-}
+};
 
 onMounted(() => {
-  startAutoScroll()
-})
+  startAutoScroll();
+});
 
 onUnmounted(() => {
-  stopAutoScroll()
-})
+  stopAutoScroll();
+});
 </script>
 
 <template>
@@ -86,22 +152,21 @@ onUnmounted(() => {
       <div class="banner-overlay"></div>
     </div>
 
-          <p>
-            The Aboitiz Foundation delivers impactful programs and services across various sectors,
-            creating sustainable change in communities through our partnerships and initiatives.
-          </p>
-          <div class="donate-wrapper">
-            <a href="#" class="donate-btn">Donate</a>
-          </div>
+    <!-- Content Box overlapping the banner - thinner height -->
+    <div class="content-box">
+      <div class="decorative-line left"></div>
+      <div class="decorative-circle top-right"></div>
+      <div class="decorative-circle bottom-left"></div>
+      <div class="content-text">
+        <div class="introTe">
+          <h1>Our <span class="accent">Services</span></h1>
         </div>
-      </section>
-
-      <section class="content">
-        <img
-          src="/src/components/icons/palestine.svg"
-          alt="services illustration"
-        />
-      </section>
+        <p>
+          The Aboitiz Foundation delivers impactful programs and services across various sectors,
+          creating sustainable change in communities through our partnerships and initiatives.
+        </p>
+      </div>
+      <div class="decorative-line right"></div>
     </div>
 
     <!-- Featured Projects Section - Side by side layout -->
@@ -112,15 +177,28 @@ onUnmounted(() => {
             <h1>Featured <span class="accent">Projects</span></h1>
           </div>
 
-        <p>
-          Explore our ongoing and completed projects that make a difference in people's lives
-          and contribute to nation-building.
-        </p>
+          <p class="projects-description">
+            Explore our ongoing and completed projects that make a difference in people's lives
+            and contribute to nation-building.
+          </p>
 
-        <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+          <!-- Volunteer button moved here -->
+          <div class="button-wrapper">
+            <a href="/contact" class="volunteer-btn">Volunteer</a>
+          </div>
+        </div>
+
+        <div class="carousel"
+          @mouseenter="isHovered = true"
+          @mouseleave="isHovered = false"
+        >
           <div class="carousel-inner" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-            <div class="carousel-item" v-for="(project, index) in projects" :key="index">
-              <img :src="project.image" :alt="project.title" />
+            <div
+              class="carousel-item"
+              v-for="(project, index) in projects"
+              :key="index"
+            >
+              <img :src="project.image" :alt="project.title">
               <div class="carousel-caption hover-target">
                 <h3>{{ project.title }}</h3>
                 <p>{{ project.description }}</p>
@@ -533,5 +611,392 @@ onUnmounted(() => {
 
 .carousel-indicators span:hover {
   background: rgba(255, 255, 255, 0.8);
+}
+
+/* Seven Parameters Section - Creative Design */
+.parameters-section {
+  width: 100%;
+  padding: 5rem 1rem;
+  background: #e2e2e2;
+  position: relative;
+  overflow: hidden;
+}
+
+.parameters-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(159, 26, 28, 0.05);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+}
+
+.parameters-header {
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+}
+
+.parameters-header h2 {
+  font-size: 3rem; /* Increased font size */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.parameters-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #9f1a1c;
+  border-radius: 2px;
+}
+
+.parameters-header p {
+  color: #000000; /* Changed to black for better readability */
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem; /* Increased font size */
+}
+
+/* Desktop Grid Layout - 3 in first row, 4 in second row */
+.parameters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for first row */
+  grid-template-rows: auto auto; /* Two rows */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Make the second row have 4 cards */
+.parameters-grid .parameter-card:nth-child(n+4) {
+  grid-column: span 1;
+}
+
+/* Center the 7th parameter if needed */
+.parameters-grid .parameter-card:nth-child(7) {
+  grid-column: 2 / span 1; /* Center in second row if needed */
+}
+
+.parameter-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border-top: 4px solid #9f1a1c;
+}
+
+.parameter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.parameter-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #9f1a1c;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  line-height: 1;
+}
+
+.parameter-content {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.parameter-content h3 {
+  font-size: 1.4rem; /* Increased font size */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.parameter-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.parameter-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #000000; /* Changed to black for better readability */
+  line-height: 1.5;
+  text-align: left;
+  font-size: 1.1rem; /* Increased font size */
+}
+
+.parameter-content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background: #9f1a1c;
+  border-radius: 50%;
+}
+
+/* Mobile Carousel for Parameters */
+.parameters-carousel {
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.param-slide {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  border-top: 4px solid #9f1a1c;
+  min-height: 300px;
+}
+
+.param-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(159, 26, 28, 0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.param-nav.prev {
+  left: 0;
+}
+
+.param-nav.next {
+  right: 0;
+}
+
+.param-nav:hover {
+  background: #9f1a1c;
+}
+
+.param-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.param-indicators span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(159, 26, 28, 0.3);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.param-indicators span.active {
+  background: #9f1a1c;
+  transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+.desktop-only {
+  display: grid;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .projects-wrapper {
+    gap: 2rem;
+  }
+
+  .decorative-line.left {
+    left: 2%;
+  }
+
+  .decorative-line.right {
+    right: 2%;
+  }
+
+  .hero-banner {
+    height: 600px; /* Adjusted for medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .projects-wrapper {
+    flex-direction: column;
+  }
+
+  .projects-content {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .projects-content .introTe {
+    justify-content: center;
+  }
+
+  .projects-content .introTe h1 {
+    text-align: center;
+  }
+
+  .button-wrapper {
+    justify-content: center;
+  }
+
+  .carousel {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .parameters-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+  }
+
+  /* Adjust the 7th parameter for 2-column layout */
+  .parameters-grid .parameter-card:nth-child(7) {
+    grid-column: 1 / span 2; /* Span both columns */
+  }
+
+  .introTe h1 {
+    font-size: 3rem;
+  }
+
+  .parameters-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .decorative-line {
+    display: none;
+  }
+
+  .hero-banner {
+    height: 500px; /* Adjusted for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 400px; /* Adjusted for mobile */
+  }
+
+  .content-box {
+    margin-top: -3rem;
+    padding: 1.5rem 0; /* Even thinner on mobile */
+  }
+
+  .introTe h1 {
+    font-size: 2.5rem;
+  }
+
+  .content-box p {
+    font-size: 1.1rem;
+  }
+
+  .carousel-item img {
+    height: 300px;
+  }
+
+  .parameters-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .parameters-header p {
+    font-size: 1.1rem;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .projects-content .introTe h1 {
+    font-size: 2.5rem;
+  }
+
+  .projects-description {
+    font-size: 1.1rem;
+  }
+
+  .decorative-circle {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    height: 300px; /* Adjusted for very small screens */
+  }
+
+  .introTe h1 {
+    font-size: 2rem;
+  }
+
+  .content-box p {
+    font-size: 1rem;
+  }
+
+  .volunteer-btn {
+    padding: 0.6rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .parameters-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .parameters-header p {
+    font-size: 1rem;
+  }
+
+  .projects-content .introTe h1 {
+    font-size: 2rem;
+  }
+
+  .projects-description {
+    font-size: 1rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
 }
 </style>
