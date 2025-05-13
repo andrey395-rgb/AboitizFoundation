@@ -1,154 +1,151 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const currentSlide = ref(0);
-const isTransitioning = ref(false);
-let intervalId: number | undefined;
-const isHovered = ref(false);
+const currentSlide = ref(0)
+const isTransitioning = ref(false)
+let intervalId: number | undefined
+const isHovered = ref(false)
 
 const projects = [
   {
-    title: "Education Initiatives",
-    description: "Providing access to quality education through school building projects, scholarship programs, and teacher training.",
-    image: "/src/components/icons/palestine.svg"
+    title: 'Education Initiatives',
+    description:
+      'Providing access to quality education through school building projects, scholarship programs, and teacher training.',
+    image: '/src/components/icons/palestine.svg',
   },
   {
-    title: "Community Development",
-    description: "Empowering communities through livelihood programs, infrastructure development, and capacity building.",
-    image: "/src/components/icons/palestine.svg"
+    title: 'Community Development',
+    description:
+      'Empowering communities through livelihood programs, infrastructure development, and capacity building.',
+    image: '/src/components/icons/palestine.svg',
   },
   {
-    title: "Environmental Sustainability",
-    description: "Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.",
-    image: "/src/components/icons/palestine.svg"
+    title: 'Environmental Sustainability',
+    description:
+      'Implementing projects that promote environmental conservation, renewable energy, and sustainable practices.',
+    image: '/src/components/icons/palestine.svg',
   },
   {
-    title: "Disaster Response",
-    description: "Providing immediate relief and long-term rehabilitation for communities affected by natural disasters.",
-    image: "/src/components/icons/palestine.svg"
-  }
-];
+    title: 'Disaster Response',
+    description:
+      'Providing immediate relief and long-term rehabilitation for communities affected by natural disasters.',
+    image: '/src/components/icons/palestine.svg',
+  },
+]
 
 // Parameters section data
 const parameters = [
   {
-    number: "01",
-    title: "Addresses a community need",
+    number: '01',
+    title: 'Addresses a community need',
     points: [
-      "Has the capacity to increase income levels and generate employment",
-      "Uplift the living conditions of the beneficiaries."
-    ]
+      'Has the capacity to increase income levels and generate employment',
+      'Uplift the living conditions of the beneficiaries.',
+    ],
   },
   {
-    number: "02",
-    title: "Aligns with our core business",
+    number: '02',
+    title: 'Aligns with our core business',
     points: [
-      "Relates to the core businesses of our strategic business units (SBUs) – power, banking and financial services, food, infrastructure, and land."
-    ]
+      'Relates to the core businesses of our strategic business units (SBUs) – power, banking and financial services, food, infrastructure, and land.',
+    ],
   },
   {
-    number: "03",
-    title: "Helps our business or creates competitive advantage for the Business Units (BUs)",
+    number: '03',
+    title: 'Helps our business or creates competitive advantage for the Business Units (BUs)',
     points: [
-      "Helps increase revenues and lower costs",
-      "Enhances key stakeholder relationships with local government unit, host community, etc.",
-    ]
+      'Helps increase revenues and lower costs',
+      'Enhances key stakeholder relationships with local government unit, host community, etc.',
+    ],
   },
   {
-    number: "04",
+    number: '04',
     title: "Aligns with the Aboitiz Foundation's programs",
     points: [
-      "Aligns with the foundation's program of education, enterprise development, environment, including disaster risk reduction and resilience"
-    ]
+      "Aligns with the foundation's program of education, enterprise development, environment, including disaster risk reduction and resilience",
+    ],
   },
   {
-    number: "05",
-    title: "Sustainable and scalable",
+    number: '05',
+    title: 'Sustainable and scalable',
     points: [
-      "Has potential for growth and expansion",
-      "Creates lasting impact beyond initial implementation"
-    ]
+      'Has potential for growth and expansion',
+      'Creates lasting impact beyond initial implementation',
+    ],
   },
   {
-    number: "06",
-    title: "Measurable impact",
-    points: [
-      "Has clear metrics for success",
-      "Allows for transparent reporting of outcomes"
-    ]
+    number: '06',
+    title: 'Measurable impact',
+    points: ['Has clear metrics for success', 'Allows for transparent reporting of outcomes'],
   },
   {
-    number: "07",
-    title: "Collaborative approach",
+    number: '07',
+    title: 'Collaborative approach',
     points: [
-      "Involves multiple stakeholders in planning and execution",
-      "Leverages partnerships for greater impact"
-    ]
-  }
-];
+      'Involves multiple stakeholders in planning and execution',
+      'Leverages partnerships for greater impact',
+    ],
+  },
+]
 
 // Active parameter for mobile view
-const activeParameter = ref(0);
+const activeParameter = ref(0)
 
 const nextParameter = () => {
-  activeParameter.value = (activeParameter.value + 1) % parameters.length;
-};
+  activeParameter.value = (activeParameter.value + 1) % parameters.length
+}
 
 const prevParameter = () => {
-  activeParameter.value = (activeParameter.value - 1 + parameters.length) % parameters.length;
-};
+  activeParameter.value = (activeParameter.value - 1 + parameters.length) % parameters.length
+}
 
 const nextSlide = () => {
-  if (isTransitioning.value) return;
-  isTransitioning.value = true;
-  currentSlide.value = (currentSlide.value + 1) % projects.length;
-  setTimeout(() => isTransitioning.value = false, 500);
-};
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  currentSlide.value = (currentSlide.value + 1) % projects.length
+  setTimeout(() => (isTransitioning.value = false), 500)
+}
 
 const prevSlide = () => {
-  if (isTransitioning.value) return;
-  isTransitioning.value = true;
-  currentSlide.value = (currentSlide.value - 1 + projects.length) % projects.length;
-  setTimeout(() => isTransitioning.value = false, 500);
-};
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  currentSlide.value = (currentSlide.value - 1 + projects.length) % projects.length
+  setTimeout(() => (isTransitioning.value = false), 500)
+}
 
 const goToSlide = (index: number) => {
-  if (isTransitioning.value || currentSlide.value === index) return;
-  isTransitioning.value = true;
-  currentSlide.value = index;
-  setTimeout(() => isTransitioning.value = false, 500);
-};
+  if (isTransitioning.value || currentSlide.value === index) return
+  isTransitioning.value = true
+  currentSlide.value = index
+  setTimeout(() => (isTransitioning.value = false), 500)
+}
 
 const startAutoScroll = () => {
   intervalId = window.setInterval(() => {
-    if (!isHovered.value) nextSlide();
-  }, 3000);
-};
+    if (!isHovered.value) nextSlide()
+  }, 3000)
+}
 
 const stopAutoScroll = () => {
   if (intervalId) {
-    clearInterval(intervalId);
+    clearInterval(intervalId)
   }
-};
+}
 
 onMounted(() => {
-  startAutoScroll();
-});
+  startAutoScroll()
+})
 
 onUnmounted(() => {
-  stopAutoScroll();
-});
+  stopAutoScroll()
+})
 </script>
 
 <template>
   <div class="services">
     <!-- Hero Banner - Doubled height -->
     <div class="hero-banner">
-      <img
-        src="/src/components/icons/palestine.svg"
-        alt="Services banner"
-        class="banner-image"
-      />
+      <img src="/src/components/icons/palestine.svg" alt="Services banner" class="banner-image" />
       <div class="banner-overlay"></div>
     </div>
 
@@ -178,8 +175,8 @@ onUnmounted(() => {
           </div>
 
           <p class="projects-description">
-            Explore our ongoing and completed projects that make a difference in people's lives
-            and contribute to nation-building.
+            Explore our ongoing and completed projects that make a difference in people's lives and
+            contribute to nation-building.
           </p>
 
           <!-- Volunteer button moved here -->
@@ -188,17 +185,10 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div class="carousel"
-          @mouseenter="isHovered = true"
-          @mouseleave="isHovered = false"
-        >
-          <div class="carousel-inner" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-            <div
-              class="carousel-item"
-              v-for="(project, index) in projects"
-              :key="index"
-            >
-              <img :src="project.image" :alt="project.title">
+        <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+          <div class="carousel-inner" :style="{ transform: translateX(-${currentSlide * 100}%) }">
+            <div class="carousel-item" v-for="(project, index) in projects" :key="index">
+              <img :src="project.image" :alt="project.title" />
               <div class="carousel-caption hover-target">
                 <h3>{{ project.title }}</h3>
                 <p>{{ project.description }}</p>
@@ -226,7 +216,11 @@ onUnmounted(() => {
       <div class="parameters-header">
         <h2>Seven Parameters</h2>
         <p>
-          To ensure that our projects deliver the much needed results for our communities, we encourage development of carefully-designed interventions that are inclusive, collaborative, and scalable. From the traditional charitable projects or dole-outs, we have been transforming the way we do CSR and following the CSR 2.0 parameters towards inclusive impact.
+          To ensure that our projects deliver the much needed results for our communities, we
+          encourage development of carefully-designed interventions that are inclusive,
+          collaborative, and scalable. From the traditional charitable projects or dole-outs, we
+          have been transforming the way we do CSR and following the CSR 2.0 parameters towards
+          inclusive impact.
         </p>
       </div>
 
@@ -267,7 +261,10 @@ onUnmounted(() => {
           <div class="parameter-content">
             <h3>{{ parameters[activeParameter].title }}</h3>
             <ul>
-              <li v-for="(point, pointIndex) in parameters[activeParameter].points" :key="pointIndex">
+              <li
+                v-for="(point, pointIndex) in parameters[activeParameter].points"
+                :key="pointIndex"
+              >
                 {{ point }}
               </li>
             </ul>
@@ -457,7 +454,6 @@ onUnmounted(() => {
   font-size: 1.2rem; /* Increased font size */
   line-height: 1.7;
   max-width: 100%;
-
 }
 
 /* Volunteer button moved under Featured Projects */
@@ -680,7 +676,7 @@ onUnmounted(() => {
 }
 
 /* Make the second row have 4 cards */
-.parameters-grid .parameter-card:nth-child(n+4) {
+.parameters-grid .parameter-card:nth-child(n + 4) {
   grid-column: span 1;
 }
 
