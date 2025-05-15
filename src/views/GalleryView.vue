@@ -3,7 +3,6 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 const galleryRows = ref(4);
 
-// Sample data for gallery items
 const galleryItems = [
   { id: 1, title: "Education Initiative", description: "Providing schools and learning materials to underprivileged communities.", image: "/src/components/icons/s1.png" },
   { id: 2, title: "Medical Camp", description: "Free health checkups and medicines in rural areas.", image: "/src/components/icons/s2.png" },
@@ -13,10 +12,9 @@ const galleryItems = [
   { id: 6, title: "Livelihood Training", description: "Skills development for sustainable income.", image: "/src/components/icons/s6.png" },
 ];
 
-// Duplicate items to create seamless infinite scroll
 const duplicatedItems = [...galleryItems, ...galleryItems];
 
-// Calculate animation duration based on number of items
+
 const getAnimationDuration = () => {
   const baseDuration = 40; // seconds to complete one full cycle
   return `${baseDuration}s`;
@@ -494,7 +492,7 @@ p {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1200px) {
   .header-section {
     margin-top: 100px;

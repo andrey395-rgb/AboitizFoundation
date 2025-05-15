@@ -40,7 +40,7 @@ import { ref } from 'vue'
 
 const currentYear = new Date().getFullYear()
 
-// Partner logos data - matching the HomeView structure
+
 const partners = [
   { name: 'Aboitiz Power', logo: '/src/components/icons/partner1.png' },
   { name: 'Aboitiz Equity Ventures', logo: '/src/components/icons/partner2.png' },
@@ -116,7 +116,7 @@ const partners = [
   align-items: center;
 }
 
-/* Partners Logo Grid - 8 logos, matching HomeView */
+
 .partners-logo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -155,7 +155,7 @@ const partners = [
   background: #9f1a1c;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1200px) {
   .footer-container {
     padding: 0 2rem;
@@ -218,7 +218,7 @@ const partners = [
   }
 }
 
-/* Hide sponsors in mobile view as requested */
+
 @media (max-width: 480px) {
   .footer-right {
     display: none;
