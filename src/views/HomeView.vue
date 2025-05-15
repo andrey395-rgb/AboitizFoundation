@@ -1,25 +1,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import Donate from '../components/Donate.vue' // Import the Donate component
+import Donate from '../components/Donate.vue'
 
-// Add state for controlling the donate modal
 const isDonateModalOpen = ref(false)
 
-// Function to open the donate modal
 const openDonateModal = () => {
   isDonateModalOpen.value = true
 }
 
-// Function to close the donate modal
 const closeDonateModal = () => {
   isDonateModalOpen.value = false
 }
 
-// Handle donation submission
 const handleDonationSubmit = (formData: any) => {
   console.log('Donation submitted:', formData)
-  // Process the donation - you would typically send this to your backend
-  // Show a success message or redirect to a thank you page
+
   closeDonateModal()
 }
 
@@ -328,12 +323,12 @@ p {
 }
 
 .donate-btn {
-  background: #9f1a1c;
+  background: #dc1b28;
   color: white;
   font-weight: bold;
   padding: 0.75rem 2.5rem;
   border-radius: 4px;
-  border: 2px solid #9f1a1c;
+  border: 2px solid #dc1b28;
   transition: all 0.3s ease;
   text-decoration: none;
   font-size: 1.1rem;
@@ -501,8 +496,8 @@ p {
 
 .map-container {
   width: 100%;
-  padding: 5rem 2rem;
-  background: #ff;
+  padding: 2rem 2rem;
+  /* background: #ff; */
 }
 
 .map-header {
