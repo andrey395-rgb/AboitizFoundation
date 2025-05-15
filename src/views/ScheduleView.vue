@@ -77,7 +77,6 @@ onMounted(() => {
 
   .calendly-inline-widget {
     min-width: 300px;
-    height: 400px;
   }
 }
 </style>

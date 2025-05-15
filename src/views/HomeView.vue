@@ -139,8 +139,8 @@ onMounted(() => {
             src="/src/components/icons/IP1.jpg"
             alt="Children benefiting from Aboitiz Foundation programs"
           />
-          <div class="decorative-circle top-right"></div>
-          <div class="decorative-circle bottom-left"></div>
+          <!-- <div class="decorative-circle top-right"></div> -->
+          <!-- <div class="decorative-circle bottom-left"></div> -->
         </div>
       </section>
     </div>
@@ -155,8 +155,8 @@ onMounted(() => {
     <div class="second-home">
       <div class="partners-container fade-in">
         <div class="decorative-line left"></div>
-        <div class="decorative-circle top-right"></div>
-        <div class="decorative-circle bottom-left"></div>
+        <!-- <div class="decorative-circle top-right"></div> -->
+        <!-- <div class="decorative-circle bottom-left"></div> -->
 
         <div class="partners-content">
           <div class="introTe">
@@ -416,7 +416,8 @@ p {
 
 .banner-section {
   width: 100%;
-  margin: 3rem 0;
+  /* margin: 3rem 0; */
+  margin-top: 3rem;
   position: relative;
 }
 
@@ -504,7 +505,7 @@ p {
 .map-container {
   width: 100%;
   padding: 5rem 2rem;
-  background: #f5f5f5;
+  background: #ff;
 }
 
 .map-header {
