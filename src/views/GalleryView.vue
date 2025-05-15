@@ -278,6 +278,8 @@ p {
   overflow: hidden;
   position: relative;
   margin-bottom: 1rem;
+  margin-left: 1rem;
+
 }
 
 .gallery-track {

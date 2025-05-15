@@ -36,21 +36,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear()
 
 // Partner logos data - matching the HomeView structure
 const partners = [
-  { name: "Aboitiz Power", logo: "/src/components/icons/partner1.png" },
-  { name: "Aboitiz Equity Ventures", logo: "/src/components/icons/partner2.png" },
-  { name: "Union Bank", logo: "/src/components/icons/partner3.png" },
-  { name: "Pilmico", logo: "/src/components/icons/partner4.png" },
-  { name: "Aboitiz InfraCapital", logo: "/src/components/icons/partner5.png" },
-  { name: "Aboitiz Land", logo: "/src/components/icons/partner6.png" },
-  { name: "Republic Cement", logo: "/src/components/icons/partner7.png" },
-  { name: "Aboitiz Foundation", logo: "/src/components/icons/partner8.png" }
-];
+  { name: 'Aboitiz Power', logo: '/src/components/icons/partner1.png' },
+  { name: 'Aboitiz Equity Ventures', logo: '/src/components/icons/partner2.png' },
+  { name: 'Union Bank', logo: '/src/components/icons/partner3.png' },
+  { name: 'Pilmico', logo: '/src/components/icons/partner4.png' },
+  { name: 'Aboitiz InfraCapital', logo: '/src/components/icons/partner5.png' },
+  { name: 'Aboitiz Land', logo: '/src/components/icons/partner6.png' },
+  { name: 'Republic Cement', logo: '/src/components/icons/partner7.png' },
+  { name: 'Aboitiz Foundation', logo: '/src/components/icons/partner8.png' },
+]
 </script>
 
 <style scoped>
@@ -129,8 +129,8 @@ const partners = [
   transition: transform 0.3s ease;
   padding: 0.75rem;
   border-radius: 8px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 .partner-logo-link:hover {
@@ -150,7 +150,7 @@ const partners = [
   padding: 1rem 0;
   text-align: center;
   border-top: 1px solid #ddd;
-  color: white;
+  color: #ffffff;
   box-sizing: border-box;
   background: #9f1a1c;
 }

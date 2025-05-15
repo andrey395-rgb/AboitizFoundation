@@ -465,8 +465,8 @@ p {
   transition: transform 0.3s ease;
   padding: 1rem;
   border-radius: 8px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 .partner-logo-link:hover {
