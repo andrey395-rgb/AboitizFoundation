@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import Donate from '../components/Donate.vue'; // Import the Donate component
+import { ref, onMounted } from 'vue'
+import Donate from '../components/Donate.vue' // Import the Donate component
 
 // Add state for controlling the donate modal
-const isDonateModalOpen = ref(false);
+const isDonateModalOpen = ref(false)
 
 // Function to open the donate modal
 const openDonateModal = () => {
-  isDonateModalOpen.value = true;
-};
+  isDonateModalOpen.value = true
+}
 
 // Function to close the donate modal
 const closeDonateModal = () => {
-  isDonateModalOpen.value = false;
-};
+  isDonateModalOpen.value = false
+}
 
 // Handle donation submission
 const handleDonationSubmit = (formData: any) => {
-  console.log('Donation submitted:', formData);
+  console.log('Donation submitted:', formData)
   // Process the donation - you would typically send this to your backend
   // Show a success message or redirect to a thank you page
-  closeDonateModal();
-};
+  closeDonateModal()
+}
 
 const coreValues = [
   {
@@ -253,17 +253,11 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Donate Modal Component -->
-    <Donate
-      :isOpen="isDonateModalOpen"
-      @close="closeDonateModal"
-      @submit="handleDonationSubmit"
-    />
+    <Donate :isOpen="isDonateModalOpen" @close="closeDonateModal" @submit="handleDonationSubmit" />
   </div>
 </template>
 
 <style scoped>
-/* Your existing styles remain unchanged */
 .home {
   width: 100%;
   display: flex;
@@ -384,6 +378,7 @@ p {
   border-radius: 50%;
   background: rgba(159, 26, 28, 0.1);
   z-index: -1;
+  display: none;
 }
 
 .decorative-circle.top-right {
@@ -391,6 +386,7 @@ p {
   height: 200px;
   top: -50px;
   right: -50px;
+  display: none;
 }
 
 .decorative-circle.bottom-left {
@@ -398,6 +394,7 @@ p {
   height: 150px;
   bottom: -50px;
   left: -150px;
+  display: none;
 }
 
 .decorative-line {
@@ -547,7 +544,7 @@ p {
   overflow: hidden;
 }
 
-.core-values-section::before {
+/* .core-values-section::before {
   content: '';
   position: absolute;
   top: 0;
@@ -557,7 +554,7 @@ p {
   background: rgba(159, 26, 28, 0.05);
   border-radius: 50%;
   transform: translate(30%, -30%);
-}
+} */
 
 .core-values-header {
   text-align: center;
