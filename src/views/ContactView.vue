@@ -27,7 +27,6 @@
       </div>
       <div class="right-container">
         <section id="contact">
-          <!-- <h1 class="sectionTitle">Work with me!</h1> -->
           <form action="https://formspree.io/f/mqaqbzvl" method="POST">
             <div class="formGroup">
               <label class="label-for-input" for="name" style="color: white"> Name </label> <br />
@@ -96,7 +95,6 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: center; */
   margin-top: 0.5vh;
   gap: 1rem;
   img {
@@ -144,8 +142,7 @@ export default {
 .left-container {
   width: 50%;
   height: 100%;
-  /* padding-top: 10rem; */
-  /* gap: 2rem; */
+
   h2 {
     font-size: 2vh;
   }

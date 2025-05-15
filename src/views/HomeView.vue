@@ -1,98 +1,98 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-// Core values data
 const coreValues = [
   {
-    title: "INTEGRITY",
-    description: "We believe in integrity. We deliver on what we promise, practice fair processes, are accountable for our actions and their consequences.",
-    icon: "/src/components/icons/honest.png"
+    title: 'INTEGRITY',
+    description:
+      'We believe in integrity. We deliver on what we promise, practice fair processes, are accountable for our actions and their consequences.',
+    icon: '/src/components/icons/honest.png',
   },
   {
-    title: "TEAMWORK",
-    description: "We believe in teamwork. We apply a multi-disciplinary approach to achieve our business goals. We work independently while promoting cooperation and mutual respect.",
-    icon: "/src/components/icons/collaborate.png"
+    title: 'TEAMWORK',
+    description:
+      'We believe in teamwork. We apply a multi-disciplinary approach to achieve our business goals. We work independently while promoting cooperation and mutual respect.',
+    icon: '/src/components/icons/collaborate.png',
   },
   {
-    title: "INNOVATION",
-    description: "We believe in innovation. We constantly look for better ways to provide efficient systems, quality service and products.",
-    icon: "/src/components/icons/innovation.png"
+    title: 'INNOVATION',
+    description:
+      'We believe in innovation. We constantly look for better ways to provide efficient systems, quality service and products.',
+    icon: '/src/components/icons/innovation.png',
   },
   {
-    title: "RESPONSIBILITY",
-    description: "We believe in responsibility. We adhere to good corporate governance, advocate organizational and environmental sustainability, and care for all our stakeholders.",
-    icon: "/src/components/icons/social-responsibility.png"
-  }
-];
+    title: 'RESPONSIBILITY',
+    description:
+      'We believe in responsibility. We adhere to good corporate governance, advocate organizational and environmental sustainability, and care for all our stakeholders.',
+    icon: '/src/components/icons/social-responsibility.png',
+  },
+]
 
-// For mobile core values carousel with swipe functionality
-const activeValueIndex = ref(0);
-const isTransitioning = ref(false);
-const touchStartX = ref(0);
-const touchEndX = ref(0);
+const activeValueIndex = ref(0)
+const isTransitioning = ref(false)
+const touchStartX = ref(0)
+const touchEndX = ref(0)
 
 const handleTouchStart = (e) => {
-  touchStartX.value = e.touches[0].clientX;
-};
+  touchStartX.value = e.touches[0].clientX
+}
 
 const handleTouchMove = (e) => {
-  touchEndX.value = e.touches[0].clientX;
-};
+  touchEndX.value = e.touches[0].clientX
+}
 
 const handleTouchEnd = () => {
-  if (isTransitioning.value) return;
+  if (isTransitioning.value) return
 
-  const swipeThreshold = 50; // Minimum distance to register as a swipe
-  const diff = touchStartX.value - touchEndX.value;
+  const swipeThreshold = 50
+  const diff = touchStartX.value - touchEndX.value
 
   if (Math.abs(diff) > swipeThreshold) {
-    isTransitioning.value = true;
+    isTransitioning.value = true
     if (diff > 0) {
-      // Swipe left - next value
-      activeValueIndex.value = (activeValueIndex.value + 1) % coreValues.length;
+      activeValueIndex.value = (activeValueIndex.value + 1) % coreValues.length
     } else {
-      // Swipe right - previous value
-      activeValueIndex.value = (activeValueIndex.value - 1 + coreValues.length) % coreValues.length;
+      activeValueIndex.value = (activeValueIndex.value - 1 + coreValues.length) % coreValues.length
     }
-    setTimeout(() => isTransitioning.value = false, 500);
+    setTimeout(() => (isTransitioning.value = false), 500)
   }
-};
+}
 
-// Partner logos data
 const partners = [
-  { name: "Aboitiz Power", logo: "/src/components/icons/partner1.png" },
-  { name: "Aboitiz Equity Ventures", logo: "/src/components/icons/partner2.png" },
-  { name: "Union Bank", logo: "/src/components/icons/partner3.png" },
-  { name: "Pilmico", logo: "/src/components/icons/partner4.png" },
-  { name: "Aboitiz InfraCapital", logo: "/src/components/icons/partner5.png" },
-  { name: "Aboitiz Land", logo: "/src/components/icons/partner6.png" },
-  { name: "Republic Cement", logo: "/src/components/icons/partner7.png" },
-  { name: "Aboitiz Foundation", logo: "/src/components/icons/partner8.png" }
-];
+  { name: 'Aboitiz Power', logo: '/src/components/icons/partner1.png' },
+  { name: 'Aboitiz Equity Ventures', logo: '/src/components/icons/partner2.png' },
+  { name: 'Union Bank', logo: '/src/components/icons/partner3.png' },
+  { name: 'Pilmico', logo: '/src/components/icons/partner4.png' },
+  { name: 'Aboitiz InfraCapital', logo: '/src/components/icons/partner5.png' },
+  { name: 'Aboitiz Land', logo: '/src/components/icons/partner6.png' },
+  { name: 'Republic Cement', logo: '/src/components/icons/partner7.png' },
+  { name: 'Aboitiz Foundation', logo: '/src/components/icons/partner8.png' },
+]
 
-// Scroll animation for elements
 const observeElements = () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      })
+    },
+    { threshold: 0.1 },
+  )
 
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
-};
+  document.querySelectorAll('.fade-in').forEach((el) => {
+    observer.observe(el)
+  })
+}
 
 onMounted(() => {
-  observeElements();
-});
+  observeElements()
+})
 </script>
 
 <template>
   <div class="home">
-    <!-- Hero Section with Side-by-Side Layout -->
     <div class="first-home">
       <section class="hero">
         <div class="intro-text-wrapper fade-in">
@@ -113,14 +113,16 @@ onMounted(() => {
 
       <section class="content fade-in">
         <div class="image-container">
-          <img src="/src/components/icons/IP1.jpg" alt="Children benefiting from Aboitiz Foundation programs" />
+          <img
+            src="/src/components/icons/IP1.jpg"
+            alt="Children benefiting from Aboitiz Foundation programs"
+          />
           <div class="decorative-circle top-right"></div>
           <div class="decorative-circle bottom-left"></div>
         </div>
       </section>
     </div>
 
-    <!-- Full-width Banner Above Partners Section -->
     <div class="banner-section">
       <div class="banner-image">
         <img src="/src/components/icons/groupaboitiz.png" alt="Aboitiz Foundation Impact" />
@@ -128,7 +130,6 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Partners Section with Decorative Elements -->
     <div class="second-home">
       <div class="partners-container fade-in">
         <div class="decorative-line left"></div>
@@ -142,10 +143,10 @@ onMounted(() => {
 
           <p>
             We partner with the Aboitiz business units. Together with the Aboitiz Business Units, we
-            develop and implement CSR projects that aim to co-create safe, empowered, and sustainable
-            communities. Tagged as CSR 2.0, our projects deliver long-term benefits, are aligned with
-            our core competencies, encourage team member engagement, and are scalable initiatives with
-            positive sustainable impact of national scope.
+            develop and implement CSR projects that aim to co-create safe, empowered, and
+            sustainable communities. Tagged as CSR 2.0, our projects deliver long-term benefits, are
+            aligned with our core competencies, encourage team member engagement, and are scalable
+            initiatives with positive sustainable impact of national scope.
           </p>
 
           <div class="partners-logo-grid">
@@ -163,7 +164,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
 
     <div class="map-container fade-in">
       <div class="map-header">
@@ -183,7 +183,6 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Core Values Section with Cards -->
     <div class="core-values-section fade-in">
       <div class="core-values-header">
         <h1>The Aboitiz Way: <span class="accent">Our Core Values</span></h1>
@@ -194,13 +193,8 @@ onMounted(() => {
         </p>
       </div>
 
-      <!-- Desktop View for Core Values -->
       <div class="value-cards-container desktop-only">
-        <div
-          v-for="(value, index) in coreValues"
-          :key="index"
-          class="value-card"
-        >
+        <div v-for="(value, index) in coreValues" :key="index" class="value-card">
           <div class="first-part">
             <img :src="value.icon" :alt="value.title + ' icon'" />
             <h2>{{ value.title }}</h2>
@@ -217,7 +211,10 @@ onMounted(() => {
       >
         <div class="value-slide">
           <div class="first-part">
-            <img :src="coreValues[activeValueIndex].icon" :alt="coreValues[activeValueIndex].title + ' icon'" />
+            <img
+              :src="coreValues[activeValueIndex].icon"
+              :alt="coreValues[activeValueIndex].title + ' icon'"
+            />
             <h2>{{ coreValues[activeValueIndex].title }}</h2>
           </div>
           <p>{{ coreValues[activeValueIndex].description }}</p>
@@ -237,7 +234,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 .home {
   width: 100%;
   display: flex;
@@ -245,7 +241,6 @@ onMounted(() => {
   background: #ffffff;
   font-size: 18px;
 }
-
 
 h1 {
   font-size: 3.5rem;
@@ -264,18 +259,18 @@ p {
   font-weight: bold;
 }
 
-
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .first-home {
   width: 100%;
@@ -447,7 +442,6 @@ p {
   margin: 0 auto 2rem;
 }
 
-
 .partners-logo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -475,7 +469,6 @@ p {
   height: auto;
   display: block;
 }
-
 
 .map-container {
   width: 100%;
@@ -513,7 +506,6 @@ p {
   margin-top: -70px;
   border: none;
 }
-
 
 .core-values-section {
   width: 100%;
@@ -574,7 +566,9 @@ p {
   padding: 2.5rem 1.5rem;
   text-align: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -611,7 +605,6 @@ p {
   line-height: 1.6;
   margin: 0;
 }
-
 
 .values-carousel {
   max-width: 500px;
@@ -656,7 +649,6 @@ p {
   transform: scale(1.2);
 }
 
-
 .desktop-only {
   display: grid;
 }
@@ -694,7 +686,8 @@ p {
     padding: 3rem 2rem;
   }
 
-  .hero, .content {
+  .hero,
+  .content {
     width: 100%;
     padding: 0;
   }
@@ -771,7 +764,8 @@ p {
     padding: 3rem 1rem;
   }
 
-  .decorative-circle, .decorative-line {
+  .decorative-circle,
+  .decorative-line {
     opacity: 0.5;
     transform: scale(0.7);
   }
@@ -816,7 +810,8 @@ p {
     font-size: 1.5rem;
   }
 
-  .value-card p, .value-slide p {
+  .value-card p,
+  .value-slide p {
     font-size: 1rem;
   }
 

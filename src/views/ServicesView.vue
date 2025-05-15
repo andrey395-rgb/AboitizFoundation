@@ -33,7 +33,6 @@ const projects = [
   },
 ]
 
-// Parameters section data
 const parameters = [
   {
     number: '01',
@@ -88,7 +87,6 @@ const parameters = [
   },
 ]
 
-// Active parameter for mobile view
 const activeParameter = ref(0)
 
 const nextParameter = () => {
@@ -143,13 +141,11 @@ onUnmounted(() => {
 
 <template>
   <div class="services">
-    <!-- Hero Banner - Doubled height -->
     <div class="hero-banner">
       <img src="/src/components/icons/IP2.jpg" alt="Services banner" class="banner-image" />
       <div class="banner-overlay"></div>
     </div>
 
-    <!-- Content Box overlapping the banner - thinner height -->
     <div class="content-box">
       <div class="decorative-line left"></div>
       <div class="decorative-circle top-right"></div>
@@ -166,7 +162,6 @@ onUnmounted(() => {
       <div class="decorative-line right"></div>
     </div>
 
-    <!-- Featured Projects Section - Side by side layout -->
     <div class="second-section">
       <div class="projects-wrapper">
         <div class="projects-content">
@@ -179,7 +174,6 @@ onUnmounted(() => {
             contribute to nation-building.
           </p>
 
-          <!-- Volunteer button moved here -->
           <div class="button-wrapper">
             <a href="/contact" class="volunteer-btn">Volunteer</a>
           </div>
@@ -211,7 +205,6 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Seven Parameters Section with Creative Design -->
     <div class="parameters-section">
       <div class="parameters-header">
         <h2>Seven Parameters</h2>
@@ -224,9 +217,7 @@ onUnmounted(() => {
         </p>
       </div>
 
-      <!-- Desktop view - Adjusted grid layout: 3 in first row, 4 in second row -->
       <div class="parameters-grid desktop-only">
-        <!-- First row: parameters 1-3 -->
         <div v-for="(param, index) in parameters.slice(0, 3)" :key="index" class="parameter-card">
           <div class="parameter-number">{{ param.number }}</div>
           <div class="parameter-content">
@@ -239,7 +230,6 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Second row: parameters 4-7 -->
         <div v-for="(param, index) in parameters.slice(3)" :key="index + 3" class="parameter-card">
           <div class="parameter-number">{{ param.number }}</div>
           <div class="parameter-content">
@@ -253,7 +243,6 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Mobile view - Carousel style -->
       <div class="parameters-carousel mobile-only">
         <button class="param-nav prev" @click="prevParameter">❮</button>
         <div class="param-slide">
@@ -293,13 +282,12 @@ onUnmounted(() => {
   background: #ffffff;
   align-items: center;
   justify-content: center;
-  font-size: 18px; /* Increased base font size */
+  font-size: 18px;
 }
 
-/* Hero Banner Styles - Doubled height */
 .hero-banner {
   width: 100%;
-  height: 400px; /* Doubled from 400px to 800px */
+  height: 400px;
   position: relative;
   overflow: hidden;
 }
@@ -320,20 +308,18 @@ onUnmounted(() => {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/* Content Box Styles - Thinner height */
 .content-box {
   width: 100%;
-  background: #9f1a1c; /* Red background */
-  color: white; /* White text */
-  padding: 2rem 0; /* Reduced padding to make it thinner */
+  background: #9f1a1c;
+  color: white;
+  padding: 2rem 0;
   margin-top: -5rem;
   position: relative;
   overflow: hidden;
   z-index: 10;
-  text-align: center; /* Center text */
+  text-align: center;
 }
 
-/* Decorative elements */
 .decorative-line {
   position: absolute;
   height: 3px;
@@ -385,13 +371,13 @@ onUnmounted(() => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center; /* Center title */
+  justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 1rem; /* Reduced margin to make it more compact */
+  margin-bottom: 1rem;
 }
 
 .introTe h1 {
-  font-size: 3.5rem; /* Increased font size */
+  font-size: 3.5rem;
   font-weight: bold;
   color: white;
   position: relative;
@@ -400,17 +386,16 @@ onUnmounted(() => {
 .accent {
   color: #ffffff;
   font-weight: bold;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Added shadow effect */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .content-box p {
   color: #ffffff;
   line-height: 1.7;
   margin-bottom: 0;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 1.2rem;
 }
 
-/* Featured Projects Section - Side by side layout */
 .second-section {
   width: 100%;
   padding: 5rem 1rem;
@@ -419,7 +404,7 @@ onUnmounted(() => {
 
 .projects-wrapper {
   display: flex;
-  flex-direction: row; /* Changed to row for side-by-side layout */
+  flex-direction: row;
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
@@ -433,12 +418,12 @@ onUnmounted(() => {
 }
 
 .projects-content .introTe {
-  justify-content: flex-start; /* Left align title */
+  justify-content: flex-start;
 }
 
 .projects-content .introTe h1 {
   color: black;
-  font-size: 3rem; /* Increased font size */
+  font-size: 3rem;
   text-align: left;
 }
 
@@ -450,13 +435,12 @@ onUnmounted(() => {
 
 .projects-description {
   margin: 1.5rem 0;
-  color: #000000; /* Changed to black for better readability */
-  font-size: 1.2rem; /* Increased font size */
+  color: #000000;
+  font-size: 1.2rem;
   line-height: 1.7;
   max-width: 100%;
 }
 
-/* Volunteer button moved under Featured Projects */
 .button-wrapper {
   display: flex;
   margin-top: 2rem;
@@ -471,7 +455,7 @@ onUnmounted(() => {
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem;
 }
 
 .volunteer-btn:hover {
@@ -482,7 +466,6 @@ onUnmounted(() => {
   border: 1px solid #9f1a1c;
 }
 
-/* Carousel Styles */
 .carousel {
   flex: 1.5;
   position: relative;
@@ -524,7 +507,6 @@ onUnmounted(() => {
   pointer-events: none;
 }
 
-/* Show overlay when hovering over image or carousel arrows */
 .carousel-item:hover .carousel-caption,
 .carousel-control:hover + .carousel-inner .carousel-caption,
 .carousel-control:hover ~ .carousel-inner .carousel-caption,
@@ -535,14 +517,14 @@ onUnmounted(() => {
 
 .carousel-caption h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.8rem; /* Increased font size */
+  font-size: 1.8rem;
   color: #fff;
 }
 
 .carousel-caption p {
   margin: 0 auto;
   width: 90%;
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem;
   line-height: 1.5;
   color: #ffffff;
 }
@@ -609,7 +591,6 @@ onUnmounted(() => {
   background: rgba(255, 255, 255, 0.8);
 }
 
-/* Seven Parameters Section - Creative Design */
 .parameters-section {
   width: 100%;
   padding: 5rem 1rem;
@@ -637,7 +618,7 @@ onUnmounted(() => {
 }
 
 .parameters-header h2 {
-  font-size: 3rem; /* Increased font size */
+  font-size: 3rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 1.5rem;
@@ -658,31 +639,28 @@ onUnmounted(() => {
 }
 
 .parameters-header p {
-  color: #000000; /* Changed to black for better readability */
+  color: #000000;
   line-height: 1.7;
   max-width: 800px;
   margin: 0 auto;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 1.2rem;
 }
 
-/* Desktop Grid Layout - 3 in first row, 4 in second row */
 .parameters-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns for first row */
-  grid-template-rows: auto auto; /* Two rows */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Make the second row have 4 cards */
 .parameters-grid .parameter-card:nth-child(n + 4) {
   grid-column: span 1;
 }
 
-/* Center the 7th parameter if needed */
 .parameters-grid .parameter-card:nth-child(7) {
-  grid-column: 2 / span 1; /* Center in second row if needed */
+  grid-column: 2 / span 1;
 }
 
 .parameter-card {
@@ -719,7 +697,7 @@ onUnmounted(() => {
 }
 
 .parameter-content h3 {
-  font-size: 1.4rem; /* Increased font size */
+  font-size: 1.4rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 1rem;
@@ -736,10 +714,10 @@ onUnmounted(() => {
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.75rem;
-  color: #000000; /* Changed to black for better readability */
+  color: #000000;
   line-height: 1.5;
   text-align: left;
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem;
 }
 
 .parameter-content li::before {
@@ -753,7 +731,6 @@ onUnmounted(() => {
   border-radius: 50%;
 }
 
-/* Mobile Carousel for Parameters */
 .parameters-carousel {
   max-width: 500px;
   margin: 0 auto;
@@ -822,7 +799,6 @@ onUnmounted(() => {
   transform: scale(1.2);
 }
 
-/* Responsive Adjustments */
 .desktop-only {
   display: grid;
 }
@@ -845,7 +821,7 @@ onUnmounted(() => {
   }
 
   .hero-banner {
-    height: 600px; /* Adjusted for medium screens */
+    height: 600px;
   }
 }
 
@@ -877,12 +853,11 @@ onUnmounted(() => {
   }
 
   .parameters-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Adjust the 7th parameter for 2-column layout */
   .parameters-grid .parameter-card:nth-child(7) {
-    grid-column: 1 / span 2; /* Span both columns */
+    grid-column: 1 / span 2;
   }
 
   .introTe h1 {
@@ -898,18 +873,18 @@ onUnmounted(() => {
   }
 
   .hero-banner {
-    height: 500px; /* Adjusted for smaller screens */
+    height: 500px;
   }
 }
 
 @media (max-width: 768px) {
   .hero-banner {
-    height: 400px; /* Adjusted for mobile */
+    height: 400px;
   }
 
   .content-box {
     margin-top: -3rem;
-    padding: 1.5rem 0; /* Even thinner on mobile */
+    padding: 1.5rem 0;
   }
 
   .introTe h1 {
@@ -955,7 +930,7 @@ onUnmounted(() => {
 
 @media (max-width: 480px) {
   .hero-banner {
-    height: 300px; /* Adjusted for very small screens */
+    height: 300px;
   }
 
   .introTe h1 {

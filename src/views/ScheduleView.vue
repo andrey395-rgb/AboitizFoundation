@@ -1,6 +1,5 @@
 <template>
   <div class="schedule-container">
-    <!-- <h1>Schedule a Meeting</h1> -->
     <div class="calendly-container">
       <div
         class="calendly-inline-widget"
@@ -14,7 +13,6 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  // Load Calendly script
   const script = document.createElement('script')
   script.src = 'https://assets.calendly.com/assets/external/widget.js'
   script.async = true
