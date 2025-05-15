@@ -221,7 +221,7 @@ const partners = [
 
 @media (max-width: 480px) {
   .footer-right {
-    display: none;
+    /* display: none; */
   }
 
   .footer-container {
