@@ -1,5 +1,27 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
+import Donate from '../components/Donate.vue'; // Import the Donate component
+
+// Add state for controlling the donate modal
+const isDonateModalOpen = ref(false);
+
+// Function to open the donate modal
+const openDonateModal = () => {
+  isDonateModalOpen.value = true;
+};
+
+// Function to close the donate modal
+const closeDonateModal = () => {
+  isDonateModalOpen.value = false;
+};
+
+// Handle donation submission
+const handleDonationSubmit = (formData: any) => {
+  console.log('Donation submitted:', formData);
+  // Process the donation - you would typically send this to your backend
+  // Show a success message or redirect to a thank you page
+  closeDonateModal();
+};
 
 const coreValues = [
   {
@@ -106,7 +128,7 @@ onMounted(() => {
             with the help of our partners.
           </p>
           <div class="button-wrapper">
-            <a href="#" class="donate-btn">Donate</a>
+            <a href="#" class="donate-btn" @click.prevent="openDonateModal">Donate</a>
           </div>
         </div>
       </section>
@@ -230,10 +252,18 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <!-- Donate Modal Component -->
+    <Donate
+      :isOpen="isDonateModalOpen"
+      @close="closeDonateModal"
+      @submit="handleDonationSubmit"
+    />
   </div>
 </template>
 
 <style scoped>
+/* Your existing styles remain unchanged */
 .home {
   width: 100%;
   display: flex;
@@ -315,6 +345,7 @@ p {
   font-size: 1.1rem;
   display: inline-block;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .donate-btn:hover {
