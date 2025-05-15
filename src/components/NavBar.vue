@@ -15,7 +15,7 @@
       </div>
 
       <div class="nav-right">
-        <a href="#" class="donate-btn">Donate</a>
+        <a href="#" class="donate-btn" @click.prevent="openDonateModal">Donate</a>
         <button
           class="hamburger-btn"
           @click="toggleMobileMenu"
@@ -37,18 +37,28 @@
       <router-link to="/gallery" @click="closeMobileMenu">Gallery</router-link>
       <router-link to="/schedule" @click="closeMobileMenu">Scheduling</router-link>
       <router-link to="/contact" @click="closeMobileMenu">Contact Us</router-link>
-      <a href="#" class="mobile-donate-btn" @click="closeMobileMenu">Donate</a>
+      <a href="#" class="mobile-donate-btn" @click.prevent="openDonateModal">Donate</a>
     </div>
   </nav>
+
+  <!-- Donate Modal Component -->
+  <Donate
+    :isOpen="isDonateModalOpen"
+    @close="closeDonateModal"
+    @submit="handleDonationSubmit"
+    @editAmount="handleEditAmount"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import Donate from './Donate.vue';
 
 const isMobileMenuOpen = ref(false);
 const isHidden = ref(false);
 const lastScrollY = ref(0);
 const scrollThreshold = 50; // Minimum scroll amount before showing/hiding
+const isDonateModalOpen = ref(false);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
@@ -64,6 +74,29 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
   document.body.style.overflow = '';
+};
+
+// Donate modal functions
+const openDonateModal = () => {
+  isDonateModalOpen.value = true;
+  closeMobileMenu(); // Close mobile menu if open
+};
+
+const closeDonateModal = () => {
+  isDonateModalOpen.value = false;
+};
+
+const handleDonationSubmit = (formData: any) => {
+  console.log('Donation submitted:', formData);
+  // Process the donation - you would typically send this to your backend
+  // Show a success message or redirect to a thank you page
+  closeDonateModal();
+};
+
+const handleEditAmount = () => {
+  // This function is called when the user clicks "Edit amount"
+  console.log('Edit amount clicked');
+  // Any additional logic you want to perform when editing the amount
 };
 
 const handleScroll = () => {
@@ -95,15 +128,28 @@ const handleResize = () => {
   }
 };
 
+// Handle clicks outside the mobile menu to close it
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  const isHamburgerBtn = target.closest('.hamburger-btn');
+  const isMobileMenu = target.closest('.mobile-menu');
+
+  if (isMobileMenuOpen.value && !isHamburgerBtn && !isMobileMenu) {
+    closeMobileMenu();
+  }
+};
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('resize', handleResize);
+  document.addEventListener('click', handleClickOutside);
   lastScrollY.value = window.scrollY;
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
   window.removeEventListener('resize', handleResize);
+  document.removeEventListener('click', handleClickOutside);
 });
 </script>
 
@@ -202,6 +248,7 @@ onUnmounted(() => {
   border: 2px solid #dc1b28;
   transition: all 0.3s ease;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .donate-btn:hover {
@@ -292,15 +339,12 @@ onUnmounted(() => {
 }
 
 .mobile-donate-btn {
-
   background: #9f1a1c;
   color: white !important;
   font-weight: bold;
   padding: 0.75rem;
-
-
-
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .mobile-donate-btn:hover {
