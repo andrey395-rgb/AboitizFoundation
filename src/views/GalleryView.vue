@@ -16,11 +16,10 @@ const duplicatedItems = [...galleryItems, ...galleryItems];
 
 
 const getAnimationDuration = () => {
-  const baseDuration = 40; // seconds to complete one full cycle
+  const baseDuration = 40;
   return `${baseDuration}s`;
 };
 
-// Statistics with animated counting
 const stats = [
   { value: 7845, label: "Lives Positively Impacted", suffix: "+" },
   { value: 412, label: "Community Projects Completed", suffix: "" },
@@ -34,8 +33,8 @@ const animatedStats = ref(stats.map(stat => ({
 })));
 
 const startCountingStats = () => {
-  const duration = 2000; // 2 seconds for the animation
-  const frameDuration = 1000 / 60; // 60fps
+  const duration = 2000;
+  const frameDuration = 1000 / 60;
   const totalFrames = Math.round(duration / frameDuration);
 
   let frame = 0;
@@ -58,7 +57,6 @@ const startCountingStats = () => {
   requestAnimationFrame(countUp);
 };
 
-// Intersection observer for stats section
 const statsObserver = ref(null);
 const statsSection = ref(null);
 
@@ -83,7 +81,6 @@ onUnmounted(() => {
   }
 });
 
-// Scroll animation for elements
 const observeElements = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -105,7 +102,6 @@ onMounted(() => {
 
 <template>
   <div class="gallery-container">
-    <!-- Header Section -->
     <section class="header-section">
       <div class="header-content">
         <h1><span class="normal">Our</span> <span class="accent">Works</span></h1>
@@ -116,7 +112,6 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery-section">
       <div
         v-for="row in galleryRows"
@@ -144,7 +139,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <!-- Mirrored track for seamless infinite scroll -->
+
         <div class="gallery-track" aria-hidden="true">
           <div
             v-for="(item, index) in duplicatedItems"
@@ -165,7 +160,7 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- Statistics Section -->
+
     <section ref="statsSection" class="stats-section fade-in">
       <div class="stats-container">
         <div class="stats-header">
@@ -196,7 +191,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Base Styles */
 .gallery-container {
   width: 100%;
   display: flex;
@@ -205,7 +199,6 @@ onMounted(() => {
   font-size: 18px;
 }
 
-/* Typography */
 h1 {
   font-size: 3.5rem;
   font-weight: bold;
@@ -239,7 +232,6 @@ p {
   font-weight: bold;
 }
 
-/* Animation Classes */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -251,7 +243,6 @@ p {
   transform: translateY(0);
 }
 
-/* Header Section */
 .header-section {
   padding: 5rem 2rem 3rem;
   text-align: center;
@@ -262,7 +253,6 @@ p {
   margin: 0 auto;
 }
 
-/* Gallery Section */
 .gallery-section {
   width: 100%;
   padding: 2rem 0 3rem;
@@ -285,6 +275,7 @@ p {
   animation: scroll var(--animation-duration) linear infinite;
   animation-direction: var(--direction);
   will-change: transform;
+  margin-right: 2rem;
 }
 
 .gallery-row:hover .gallery-track {
@@ -358,7 +349,6 @@ p {
   transform: scale(1.1);
 }
 
-/* Statistics Section */
 .stats-section {
   width: 100%;
   padding: 5rem 2rem;
