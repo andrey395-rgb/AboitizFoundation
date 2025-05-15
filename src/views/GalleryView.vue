@@ -275,6 +275,7 @@ p {
   animation: scroll var(--animation-duration) linear infinite;
   animation-direction: var(--direction);
   will-change: transform;
+  margin-right: 1rem;
 }
 
 .gallery-row:hover .gallery-track {
